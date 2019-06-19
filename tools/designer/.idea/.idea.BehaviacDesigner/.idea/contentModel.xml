@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\borlusezhao\.Rider2019.1\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\borlusezhao\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_BehaviacDesigner.1055694536.00" t="ExcludeRecursive" />
+    <e p="D:\GitTools\behaviac\tools\designer" t="IncludeFlat">
+      <e p="BehaviacDesigner" t="IncludeRecursive">
+        <e p="AboutBox.cs" t="Include" />
+        <e p="AboutBox.Designer.cs" t="Include" />
+        <e p="AboutBox.resx" t="Include" />
+        <e p="AboutBox.zh-CN.resx" t="Include" />
+        <e p="app.config" t="Include" />
+        <e p="BehaviacDesigner.csproj" t="IncludeRecursive" />
+        <e p="BehaviacTableLayoutPanel.cs" t="Include" />
+        <e p="BehaviorTreeList.cs" t="Include" />
+        <e p="BehaviorTreeList.designer.cs" t="Include" />
+        <e p="BehaviorTreeList.resx" t="Include" />
+        <e p="BehaviorTreeList.zh-CN.resx" t="Include" />
+        <e p="BehaviorTreeListDock.cs" t="Include" />
+        <e p="BehaviorTreeListDock.Designer.cs" t="Include" />
+        <e p="BehaviorTreeListDock.resx" t="Include" />
+        <e p="BehaviorTreeListDock.zh-CN.resx" t="Include" />
+        <e p="BehaviorTreeView.cs" t="Include" />
+        <e p="BehaviorTreeView.designer.cs" t="Include" />
+        <e p="BehaviorTreeView.resx" t="Include" />
+        <e p="BehaviorTreeView.zh-CN.resx" t="Include" />
+        <e p="BehaviorTreeViewDock.cs" t="Include" />
+        <e p="BehaviorTreeViewDock.Designer.cs" t="Include" />
+        <e p="BehaviorTreeViewDock.resx" t="Include" />
+        <e p="BehaviorTreeViewDock.zh-CN.resx" t="Include" />
+        <e p="BreakPointsDock.cs" t="Include" />
+        <e p="BreakPointsDock.Designer.cs" t="Include" />
+        <e p="BreakPointsDock.resx" t="Include" />
+        <e p="BreakPointsDock.zh-CN.resx" t="Include" />
+        <e p="BT.ico" t="Include" />
+        <e p="CallStackDock.cs" t="Include" />
+        <e p="CallStackDock.Designer.cs" t="Include" />
+        <e p="CallStackDock.resx" t="Include" />
+        <e p="CallStackDock.zh-CN.resx" t="Include" />
+        <e p="ConnectDialog.cs" t="Include" />
+        <e p="ConnectDialog.Designer.cs" t="Include" />
+        <e p="ConnectDialog.resx" t="Include" />
+        <e p="ConnectDialog.zh-CN.resx" t="Include" />
+        <e p="ConsoleDock.cs" t="Include" />
+        <e p="ConsoleDock.Designer.cs" t="Include" />
+        <e p="ConsoleDock.resx" t="Include" />
+        <e p="ConsoleDock.zh-CN.resx" t="Include" />
+        <e p="ControlsDialog.cs" t="Include" />
+        <e p="ControlsDialog.Designer.cs" t="Include" />
+        <e p="ControlsDialog.resx" t="Include" />
+        <e p="ControlsDialog.zh-CN.resx" t="Include" />
+        <e p="Dialogs" t="Include">
+          <e p="EditEnumMemberDialog.cs" t="Include" />
+          <e p="EditEnumMemberDialog.Designer.cs" t="Include" />
+          <e p="EditEnumMemberDialog.resx" t="Include" />
+          <e p="EditEnumMemberDialog.zh-CN.resx" t="Include" />
+          <e p="EditEnumMemberPanel.cs" t="Include" />
+          <e p="EditEnumMemberPanel.Designer.cs" t="Include" />
+          <e p="EditEnumMemberPanel.resx" t="Include" />
+          <e p="EditEnumMemberPanel.zh-CN.resx" t="Include" />
+        </e>
+        <e p="EditWorkspaceDialog.cs" t="Include" />
+        <e p="EditWorkspaceDialog.Designer.cs" t="Include" />
+        <e p="EditWorkspaceDialog.resx" t="Include" />
+        <e p="EditWorkspaceDialog.zh-CN.resx" t="Include" />
+        <e p="ErrorCheckDialog.cs" t="Include" />
+        <e p="ErrorCheckDialog.Designer.cs" t="Include" />
+        <e p="ErrorCheckDialog.resx" t="Include" />
+        <e p="ErrorCheckDialog.zh-CN.resx" t="Include" />
+        <e p="ErrorInfoDock.cs" t="Include" />
+        <e p="ErrorInfoDock.Designer.cs" t="Include" />
+        <e p="ErrorInfoDock.resx" t="Include" />
+        <e p="ErrorInfoDock.zh-CN.resx" t="Include" />
+        <e p="ExportDialog.cs" t="Include" />
+        <e p="ExportDialog.Designer.cs" t="Include" />
+        <e p="ExportDialog.resx" t="Include" />
+        <e p="ExportDialog.zh-CN.resx" t="Include" />
+        <e p="ExportSettingDialog.cs" t="Include" />
+        <e p="ExportSettingDialog.Designer.cs" t="Include" />
+        <e p="ExportSettingDialog.resx" t="Include" />
+        <e p="ExportSettingDialog.zh-CN.resx" t="Include" />
+        <e p="FindDock.cs" t="Include" />
+        <e p="FindDock.Designer.cs" t="Include" />
+        <e p="FindDock.resx" t="Include" />
+        <e p="FindDock.zh-CN.resx" t="Include" />
+        <e p="FindFileDialog.cs" t="Include" />
+        <e p="FindFileDialog.Designer.cs" t="Include" />
+        <e p="FindFileDialog.resx" t="Include" />
+        <e p="FindFileDialog.zh-CN.resx" t="Include" />
+        <e p="FindFileDock.cs" t="Include" />
+        <e p="FindFileDock.Designer.cs" t="Include" />
+        <e p="FindFileDock.resx" t="Include" />
+        <e p="FindFileDock.zh-CN.resx" t="Include" />
+        <e p="FrequentlyUsedNodesDialog.cs" t="Include" />
+        <e p="FrequentlyUsedNodesDialog.Designer.cs" t="Include" />
+        <e p="FrequentlyUsedNodesDialog.resx" t="Include" />
+        <e p="FrequentlyUsedNodesDialog.zh-CN.resx" t="Include" />
+        <e p="MainWindow.cs" t="Include" />
+        <e p="MainWindow.Designer.cs" t="Include" />
+        <e p="MainWindow.resx" t="Include" />
+        <e p="MainWindow.zh-CN.resx" t="Include" />
+        <e p="MainWindowCloseDialog.cs" t="Include" />
+        <e p="MainWindowCloseDialog.Designer.cs" t="Include" />
+        <e p="MainWindowCloseDialog.resx" t="Include" />
+        <e p="MainWindowCloseDialog.zh-CN.resx" t="Include" />
+        <e p="MessageHandler.cs" t="Include" />
+        <e p="MetaInstanceDialog.cs" t="Include" />
+        <e p="MetaInstanceDialog.Designer.cs" t="Include" />
+        <e p="MetaInstanceDialog.resx" t="Include" />
+        <e p="MetaInstanceDialog.zh-CN.resx" t="Include" />
+        <e p="MetaMethodDialog.cs" t="Include" />
+        <e p="MetaMethodDialog.Designer.cs" t="Include" />
+        <e p="MetaMethodDialog.resx" t="Include" />
+        <e p="MetaMethodDialog.zh-CN.resx" t="Include" />
+        <e p="MetaMethodPanel.cs" t="Include" />
+        <e p="MetaMethodPanel.Designer.cs" t="Include" />
+        <e p="MetaMethodPanel.resx" t="Include" />
+        <e p="MetaMethodPanel.zh-CN.resx" t="Include" />
+        <e p="MetaPropertyDialog.cs" t="Include" />
+        <e p="MetaPropertyDialog.Designer.cs" t="Include" />
+        <e p="MetaPropertyDialog.resx" t="Include" />
+        <e p="MetaPropertyDialog.zh-CN.resx" t="Include" />
+        <e p="MetaPropertyPanel.cs" t="Include" />
+        <e p="MetaPropertyPanel.Designer.cs" t="Include" />
+        <e p="MetaPropertyPanel.resx" t="Include" />
+        <e p="MetaPropertyPanel.zh-CN.resx" t="Include" />
+        <e p="MetaStoreDock.cs" t="Include" />
+        <e p="MetaStoreDock.Designer.cs" t="Include" />
+        <e p="MetaStoreDock.resx" t="Include" />
+        <e p="MetaStoreDock.zh-CN.resx" t="Include" />
+        <e p="MetaTypeDialog.cs" t="Include" />
+        <e p="MetaTypeDialog.Designer.cs" t="Include" />
+        <e p="MetaTypeDialog.resx" t="Include" />
+        <e p="MetaTypeDialog.zh-CN.resx" t="Include" />
+        <e p="MetaTypePanel.cs" t="Include" />
+        <e p="MetaTypePanel.Designer.cs" t="Include" />
+        <e p="MetaTypePanel.resx" t="Include" />
+        <e p="MetaTypePanel.zh-CN.resx" t="Include" />
+        <e p="MruMenu.cs" t="Include" />
+        <e p="NodeLayoutManager.cs" t="Include" />
+        <e p="NodeTreeList.cs" t="Include" />
+        <e p="NodeTreeList.Designer.cs" t="Include" />
+        <e p="NodeTreeList.resx" t="Include" />
+        <e p="NodeTreeList.zh-CN.resx" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="ParametersDock.cs" t="Include" />
+        <e p="ParametersDock.Designer.cs" t="Include" />
+        <e p="ParametersDock.resx" t="Include" />
+        <e p="ParametersPanel.cs" t="Include" />
+        <e p="ParametersPanel.Designer.cs" t="Include" />
+        <e p="ParametersPanel.resx" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Resources.Designer.cs" t="Include" />
+          <e p="Resources.resx" t="Include" />
+          <e p="Resources.zh-CN.resx" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+        <e p="PropertiesDock.cs" t="Include" />
+        <e p="PropertiesDock.Designer.cs" t="Include" />
+        <e p="PropertiesDock.resx" t="Include" />
+        <e p="Resources" t="Include">
+          <e p="Backward.png" t="Include" />
+          <e p="BT.ico" t="Include" />
+          <e p="connect.png" t="Include" />
+          <e p="crashdump.ico" t="Include" />
+          <e p="disconnect.png" t="Include" />
+          <e p="document_new.png" t="Include" />
+          <e p="File-Delete.png" t="Include" />
+          <e p="File-Open.png" t="Include" />
+          <e p="Folder-Open.png" t="Include" />
+          <e p="folder_new.png" t="Include" />
+          <e p="Forward.png" t="Include" />
+          <e p="Pause.png" t="Include" />
+          <e p="Play.png" t="Include" />
+          <e p="prefab.ico" t="Include" />
+          <e p="repeat.png" t="Include" />
+          <e p="Search.png" t="Include" />
+          <e p="Skip-backward.png" t="Include" />
+          <e p="Skip-forward.png" t="Include" />
+          <e p="Stop.png" t="Include" />
+          <e p="Transform-move1.png" t="Include" />
+          <e p="Transform-move2.png" t="Include" />
+          <e p="Zoom-In.ico" t="Include" />
+          <e p="Zoom-Out.ico" t="Include" />
+        </e>
+        <e p="SaveAsDialog.cs" t="Include" />
+        <e p="SaveAsDialog.Designer.cs" t="Include" />
+        <e p="SaveAsDialog.resx" t="Include" />
+        <e p="SaveAsDialog.zh-CN.resx" t="Include" />
+        <e p="SettingsDialog.cs" t="Include" />
+        <e p="SettingsDialog.Designer.cs" t="Include" />
+        <e p="SettingsDialog.resx" t="Include" />
+        <e p="SettingsDialog.zh-CN.resx" t="Include" />
+        <e p="TimelineDock.cs" t="Include" />
+        <e p="TimelineDock.Designer.cs" t="Include" />
+        <e p="TimelineDock.resx" t="Include" />
+        <e p="UIUtilities.cs" t="Include" />
+      </e>
+      <e p="BehaviacDesigner.sln" t="IncludeFlat" />
+      <e p="BehaviacDesignerBase" t="IncludeRecursive">
+        <e p="Agent.cs" t="Include" />
+        <e p="app.config" t="Include" />
+        <e p="Attachments" t="Include">
+          <e p="Attachment.cs" t="Include" />
+          <e p="Events" t="Include">
+            <e p="Attach.cs" t="Include" />
+            <e p="AttachAction.cs" t="Include" />
+            <e p="Event.cs" t="Include" />
+            <e p="Predicate.cs" t="Include" />
+          </e>
+          <e p="Overrides" t="Include">
+            <e p="Override.cs" t="Include" />
+            <e p="OverrideRandom.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Attributes" t="Include">
+          <e p="DesignerArray.cs" t="Include" />
+          <e p="DesignerArrayBoolean.cs" t="Include" />
+          <e p="DesignerArrayEnum.cs" t="Include" />
+          <e p="DesignerArrayFloat.cs" t="Include" />
+          <e p="DesignerArrayInteger.cs" t="Include" />
+          <e p="DesignerArrayString.cs" t="Include" />
+          <e p="DesignerArrayStruct.cs" t="Include" />
+          <e p="DesignerBoolean.cs" t="Include" />
+          <e p="DesignerBooleanEditor.cs" t="Include" />
+          <e p="DesignerBooleanEditor.Designer.cs" t="Include" />
+          <e p="DesignerBooleanEditor.resx" t="Include" />
+          <e p="DesignerCompositeEditor.cs" t="Include" />
+          <e p="DesignerCompositeEditor.Designer.cs" t="Include" />
+          <e p="DesignerCompositeEditor.resx" t="Include" />
+          <e p="DesignerEnum.cs" t="Include" />
+          <e p="DesignerEnumEditor.cs" t="Include" />
+          <e p="DesignerEnumEditor.Designer.cs" t="Include" />
+          <e p="DesignerEnumEditor.resx" t="Include" />
+          <e p="DesignerEnumVariableEditor.cs" t="Include" />
+          <e p="DesignerEnumVariableEditor.Designer.cs" t="Include" />
+          <e p="DesignerEnumVariableEditor.resx" t="Include" />
+          <e p="DesignerFloat.cs" t="Include" />
+          <e p="DesignerInteger.cs" t="Include" />
+          <e p="DesignerMethodComboEnumEditor.cs" t="Include" />
+          <e p="DesignerMethodComboEnumEditor.Designer.cs" t="Include" />
+          <e p="DesignerMethodComboEnumEditor.resx" t="Include" />
+          <e p="DesignerMethodEnum.cs" t="Include" />
+          <e p="DesignerMethodEnumEditor.cs" t="Include" />
+          <e p="DesignerMethodEnumEditor.Designer.cs" t="Include" />
+          <e p="DesignerMethodEnumEditor.resx" t="Include" />
+          <e p="DesignerNodeProperty.cs" t="Include" />
+          <e p="DesignerNodePropertyEditor.cs" t="Include" />
+          <e p="DesignerNodePropertyEditor.Designer.cs" t="Include" />
+          <e p="DesignerNodePropertyEditor.resx" t="Include" />
+          <e p="DesignerNumberEditor.cs" t="Include" />
+          <e p="DesignerNumberEditor.Designer.cs" t="Include" />
+          <e p="DesignerNumberEditor.resx" t="Include" />
+          <e p="DesignerParamEnumEditor.cs" t="Include" />
+          <e p="DesignerParamEnumEditor.Designer.cs" t="Include" />
+          <e p="DesignerParamEnumEditor.resx" t="Include" />
+          <e p="DesignerParameterComboEnumEditor.cs" t="Include" />
+          <e p="DesignerParameterComboEnumEditor.Designer.cs" t="Include" />
+          <e p="DesignerParameterComboEnumEditor.resx" t="Include" />
+          <e p="DesignerParEnumEditor.cs" t="Include" />
+          <e p="DesignerParEnumEditor.Designer.cs" t="Include" />
+          <e p="DesignerParEnumEditor.resx" t="Include" />
+          <e p="DesignerProperty.cs" t="Include" />
+          <e p="DesignerPropertyComboEnumEditor.cs" t="Include" />
+          <e p="DesignerPropertyComboEnumEditor.Designer.cs" t="Include" />
+          <e p="DesignerPropertyComboEnumEditor.resx" t="Include" />
+          <e p="DesignerPropertyEditor.cs" t="Include" />
+          <e p="DesignerPropertyEditor.Designer.cs" t="Include" />
+          <e p="DesignerPropertyEditor.resx" t="Include" />
+          <e p="DesignerPropertyEnum.cs" t="Include" />
+          <e p="DesignerPropertyEnumEditor.cs" t="Include" />
+          <e p="DesignerPropertyEnumEditor.Designer.cs" t="Include" />
+          <e p="DesignerPropertyEnumEditor.resx" t="Include" />
+          <e p="DesignerPropertyUtility.cs" t="Include" />
+          <e p="DesignerRightValueEnum.cs" t="Include" />
+          <e p="DesignerString.cs" t="Include" />
+          <e p="DesignerStringEditor.cs" t="Include" />
+          <e p="DesignerStringEditor.Designer.cs" t="Include" />
+          <e p="DesignerStringEditor.resx" t="Include" />
+          <e p="DesignerStruct.cs" t="Include" />
+          <e p="DesignerTypeEnum.cs" t="Include" />
+          <e p="DesignerTypeEnumEditor.cs" t="Include" />
+          <e p="DesignerTypeEnumEditor.Designer.cs" t="Include" />
+          <e p="DesignerTypeEnumEditor.resx" t="Include" />
+          <e p="DynamicPropertyGrid.cs" t="Include" />
+          <e p="DynamicPropertyGrid.designer.cs" t="Include" />
+          <e p="DynamicPropertyGrid.resx" t="Include" />
+        </e>
+        <e p="BehaviacDesignerBase.csproj" t="IncludeRecursive" />
+        <e p="BehaviorManager.cs" t="Include" />
+        <e p="CRC32.cs" t="Include" />
+        <e p="Data" t="Include">
+          <e p="AgentData.cs" t="Include" />
+          <e p="CsExporter.cs" t="Include" />
+          <e p="DataType.cs" t="Include" />
+          <e p="DebugData.cs" t="Include" />
+          <e p="ExpandedNodeData.cs" t="Include" />
+          <e p="FrameState.cs" t="Include" />
+          <e p="Lockfree" t="Include">
+            <e p="LockFreeQueue.cs" t="Include" />
+            <e p="ThreadSafeQueue.cs" t="Include" />
+          </e>
+          <e p="MessageQueue.cs" t="Include" />
+          <e p="Undo.cs" t="Include" />
+        </e>
+        <e p="Debug.cs" t="Include" />
+        <e p="Dialogs" t="Include">
+          <e p="CompositeEditorDialog.cs" t="Include" />
+          <e p="CompositeEditorDialog.Designer.cs" t="Include" />
+          <e p="CompositeEditorDialog.resx" t="Include" />
+          <e p="CompositeEditorDialog.zh-CN.resx" t="Include" />
+        </e>
+        <e p="Exporters" t="Include">
+          <e p="bsondeserializer.cs" t="Include" />
+          <e p="bsonserializer.cs" t="Include" />
+          <e p="Exporter.cs" t="Include" />
+          <e p="ExporterBson.cs" t="Include" />
+          <e p="ExporterXml.cs" t="Include" />
+        </e>
+        <e p="External" t="Include">
+          <e p="ExtendedGraphics.cs" t="Include" />
+          <e p="HSBColor.cs" t="Include" />
+        </e>
+        <e p="FileManagers" t="Include">
+          <e p="FileManager.cs" t="Include" />
+          <e p="FileManagerXML.cs" t="Include" />
+        </e>
+        <e p="Importers" t="Include">
+          <e p="ImporterXML.cs" t="Include" />
+        </e>
+        <e p="Network" t="Include">
+          <e p="MsgReceiver.cs" t="Include" />
+          <e p="NetworkManager.cs" t="Include" />
+        </e>
+        <e p="Nodes" t="Include">
+          <e p="Action.cs" t="Include" />
+          <e p="BaseNode.ConnectedChildren.cs" t="Include" />
+          <e p="BaseNode.Connector.cs" t="Include" />
+          <e p="BaseNode.ConnectorMultiple.cs" t="Include" />
+          <e p="BaseNode.ConnectorSingle.cs" t="Include" />
+          <e p="BaseNode.cs" t="Include" />
+          <e p="Behavior.cs" t="Include" />
+          <e p="Condition.cs" t="Include" />
+          <e p="ConditionConnectors.cs" t="Include" />
+          <e p="Decorator.cs" t="Include" />
+          <e p="Impulse.cs" t="Include" />
+          <e p="Method.cs" t="Include" />
+          <e p="Node.Comment.cs" t="Include" />
+          <e p="Node.cs" t="Include" />
+          <e p="Node.ErrorCheck.cs" t="Include" />
+          <e p="ReferencedBehavior.cs" t="Include" />
+          <e p="Selector.cs" t="Include" />
+          <e p="Sequence.cs" t="Include" />
+          <e p="Task.cs" t="Include" />
+        </e>
+        <e p="NodeUI" t="Include">
+          <e p="ActionUIPolicy.cs" t="Include" />
+          <e p="AttachActionUIPolicy.cs" t="Include" />
+          <e p="BehaviorUIPolicy.cs" t="Include" />
+          <e p="ObjectUIPolicy.cs" t="Include" />
+          <e p="TransitionEffectorUIPolicy.cs" t="Include" />
+        </e>
+        <e p="NodeViewData" t="Include">
+          <e p="NodeViewData.cs" t="Include" />
+          <e p="NodeViewData.Style.cs" t="Include" />
+          <e p="NodeViewData.SubItem.cs" t="Include" />
+          <e p="NodeViewData.SubItemAttachAction.cs" t="Include" />
+          <e p="NodeViewData.SubItemAttachment.cs" t="Include" />
+          <e p="NodeViewData.SubItemConnector.cs" t="Include" />
+          <e p="NodeViewData.SubItemEffector.cs" t="Include" />
+          <e p="NodeViewData.SubItemEvent.cs" t="Include" />
+          <e p="NodeViewData.SubItemOverride.cs" t="Include" />
+          <e p="NodeViewData.SubItemProperty.cs" t="Include" />
+          <e p="NodeViewData.SubItemText.cs" t="Include" />
+          <e p="NodeViewDataStyled.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Plugin.cs" t="Include" />
+        <e p="ProcessedBehaviors.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Resources.Designer.cs" t="Include" />
+          <e p="Resources.resx" t="Include" />
+          <e p="Resources.zh-CN.resx" t="Include" />
+        </e>
+        <e p="Utilities.cs" t="Include" />
+        <e p="Workspace.cs" t="Include" />
+      </e>
+      <e p="External" t="Include">
+        <e p="DockPanel\WinFormsUI" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Docking" t="Include">
+            <e p="AutoHideStripBase.cs" t="Include" />
+            <e p="DockAreasEditor.cs" t="Include" />
+            <e p="DockContent.cs" t="Include" />
+            <e p="DockContentCollection.cs" t="Include" />
+            <e p="DockContentEventArgs.cs" t="Include" />
+            <e p="DockContentHandler.cs" t="Include" />
+            <e p="DockOutlineBase.cs" t="Include" />
+            <e p="DockPane.cs" t="Include" />
+            <e p="DockPane.SplitterControl.cs" t="Include" />
+            <e p="DockPaneCaptionBase.cs" t="Include" />
+            <e p="DockPaneCollection.cs" t="Include" />
+            <e p="DockPanel.AutoHideWindow.cs" t="Include" />
+            <e p="DockPanel.bmp" t="Include" />
+            <e p="DockPanel.cs" t="Include" />
+            <e p="DockPanel.DockDragHandler.cs" t="Include" />
+            <e p="DockPanel.DragHandler.cs" t="Include" />
+            <e p="DockPanel.FocusManager.cs" t="Include" />
+            <e p="DockPanel.MdiClientController.cs" t="Include" />
+            <e p="DockPanel.Persistor.cs" t="Include" />
+            <e p="DockPanel.SplitterDragHandler.cs" t="Include" />
+            <e p="DockPanelExtender.cs" t="Include" />
+            <e p="DockPanelSkin.cs" t="Include" />
+            <e p="DockPaneStripBase.cs" t="Include" />
+            <e p="DockWindow.cs" t="Include" />
+            <e p="DockWindow.SplitterControl.cs" t="Include" />
+            <e p="DockWindowCollection.cs" t="Include" />
+            <e p="DragForm.cs" t="Include" />
+            <e p="DummyControl.cs" t="Include" />
+            <e p="Enums.cs" t="Include" />
+            <e p="FloatWindow.cs" t="Include" />
+            <e p="FloatWindowCollection.cs" t="Include" />
+            <e p="Helpers" t="Include">
+              <e p="DockHelper.cs" t="Include" />
+              <e p="DrawHelper.cs" t="Include" />
+              <e p="ResourceHelper.cs" t="Include" />
+              <e p="Win32Helper.cs" t="Include" />
+            </e>
+            <e p="InertButtonBase.cs" t="Include" />
+            <e p="Interfaces.cs" t="Include" />
+            <e p="Localization.cs" t="Include" />
+            <e p="Measures.cs" t="Include" />
+            <e p="NestedDockingStatus.cs" t="Include" />
+            <e p="NestedPaneCollection.cs" t="Include" />
+            <e p="Resources" t="Include">
+              <e p="DockIndicator_PaneDiamond.bmp" t="Include" />
+              <e p="DockIndicator_PaneDiamond_Bottom.bmp" t="Include" />
+              <e p="Dockindicator_PaneDiamond_Fill.bmp" t="Include" />
+              <e p="DockIndicator_PaneDiamond_Hotspot.bmp" t="Include" />
+              <e p="DockIndicator_PaneDiamond_HotspotIndex.bmp" t="Include" />
+              <e p="DockIndicator_PaneDiamond_Left.bmp" t="Include" />
+              <e p="DockIndicator_PaneDiamond_Right.bmp" t="Include" />
+              <e p="DockIndicator_PaneDiamond_Top.bmp" t="Include" />
+              <e p="DockIndicator_PanelBottom.bmp" t="Include" />
+              <e p="DockIndicator_PanelBottom_Active.bmp" t="Include" />
+              <e p="DockIndicator_PanelFill.bmp" t="Include" />
+              <e p="DockIndicator_PanelFill_Active.bmp" t="Include" />
+              <e p="DockIndicator_PanelLeft.bmp" t="Include" />
+              <e p="DockIndicator_PanelLeft_Active.bmp" t="Include" />
+              <e p="DockIndicator_PanelRight.bmp" t="Include" />
+              <e p="DockIndicator_PanelRight_Active.bmp" t="Include" />
+              <e p="DockIndicator_PanelTop.bmp" t="Include" />
+              <e p="DockIndicator_PanelTop_Active.bmp" t="Include" />
+              <e p="DockPane_AutoHide.bmp" t="Include" />
+              <e p="DockPane_Close.bmp" t="Include" />
+              <e p="DockPane_Dock.bmp" t="Include" />
+              <e p="DockPane_Option.bmp" t="Include" />
+              <e p="DockPane_OptionOverflow.bmp" t="Include" />
+            </e>
+            <e p="Resources.Designer.cs" t="Include" />
+            <e p="Resources.resx" t="Include" />
+            <e p="SplitterBase.cs" t="Include" />
+            <e p="Strings.Designer.cs" t="Include" />
+            <e p="Strings.resx" t="Include" />
+            <e p="VisibleNestedPaneCollection.cs" t="Include" />
+            <e p="VS2005AutoHideStrip.cs" t="Include" />
+            <e p="VS2005DockPaneCaption.cs" t="Include" />
+            <e p="VS2005DockPaneStrip.cs" t="Include" />
+            <e p="Win32" t="Include">
+              <e p="Enums.cs" t="Include" />
+              <e p="NativeMethods.cs" t="Include" />
+            </e>
+          </e>
+          <e p="license.txt" t="Include" />
+          <e p="obj" t="ExcludeRecursive" />
+          <e p="Properties" t="Include">
+            <e p="AssemblyInfo.cs" t="Include" />
+          </e>
+          <e p="WinFormsUI.csproj" t="IncludeRecursive" />
+        </e>
+      </e>
+      <e p="out" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Plugins" t="Include">
+        <e p="PluginBehaviac" t="IncludeRecursive">
+          <e p="Agent.cs" t="Include" />
+          <e p="app.config" t="Include" />
+          <e p="DataExporters" t="Include">
+            <e p="Cpp" t="Include">
+              <e p="ArrayCppExporter.cs" t="Include" />
+              <e p="DataCppExporter.cs" t="Include" />
+              <e p="EnumCppExporter.cs" t="Include" />
+              <e p="MethodCppExporter.cs" t="Include" />
+              <e p="ParameterCppExporter.cs" t="Include" />
+              <e p="ParInfoCppExporter.cs" t="Include" />
+              <e p="PropertyCppExporter.cs" t="Include" />
+              <e p="RightValueCppExporter.cs" t="Include" />
+              <e p="StructCppExporter.cs" t="Include" />
+              <e p="VariableCppExporter.cs" t="Include" />
+            </e>
+            <e p="Cs" t="Include">
+              <e p="ArrayCsExporter.cs" t="Include" />
+              <e p="DataCsExporter.cs" t="Include" />
+              <e p="EnumCsExporter.cs" t="Include" />
+              <e p="MethodCsExporter.cs" t="Include" />
+              <e p="ParameterCsExporter.cs" t="Include" />
+              <e p="ParInfoCsExporter.cs" t="Include" />
+              <e p="PropertyCsExporter.cs" t="Include" />
+              <e p="RightValueCsExporter.cs" t="Include" />
+              <e p="StructCsExporter.cs" t="Include" />
+              <e p="VariableCsExporter.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Exporters" t="Include">
+            <e p="ExporterCpp.cs" t="Include" />
+            <e p="ExporterCs.cs" t="Include" />
+          </e>
+          <e p="NodeExporters" t="Include">
+            <e p="AttachmentExporter.cs" t="Include" />
+            <e p="Cpp" t="Include">
+              <e p="Actions" t="Include">
+                <e p="ActionCppExporter.cs" t="Include" />
+                <e p="AssignmentCppExporter.cs" t="Include" />
+                <e p="ComputeCppExporter.cs" t="Include" />
+                <e p="EndCppExporter.cs" t="Include" />
+                <e p="WaitCppExporter.cs" t="Include" />
+                <e p="WaitFramesCppExporter.cs" t="Include" />
+              </e>
+              <e p="AttachmentCppExporter.cs" t="Include" />
+              <e p="Attachments" t="Include">
+                <e p="AttachActionCppExporter.cs" t="Include" />
+                <e p="EffectorCppExporter.cs" t="Include" />
+                <e p="EventCppExporter.cs" t="Include" />
+                <e p="PreconditionCppExporter.cs" t="Include" />
+              </e>
+              <e p="Composites" t="Include">
+                <e p="ParallelCppExporter.cs" t="Include" />
+                <e p="QueryCppExporter.cs" t="Include" />
+                <e p="ReferencedBehaviorCppExporter.cs" t="Include" />
+                <e p="SelectorLoopCppExporter.cs" t="Include" />
+                <e p="SelectorProbabilityCppExporter.cs" t="Include" />
+                <e p="SelectorStochasticCppExporter.cs" t="Include" />
+                <e p="SequenceStochasticCppExporter.cs" t="Include" />
+              </e>
+              <e p="Conditions" t="Include">
+                <e p="ConditionCppExporter.cs" t="Include" />
+              </e>
+              <e p="Decorators" t="Include">
+                <e p="DecoratorCountCppExporter.cs" t="Include" />
+                <e p="DecoratorCppExporter.cs" t="Include" />
+                <e p="DecoratorFramesCppExporter.cs" t="Include" />
+                <e p="DecoratorIteratorCppExporter.cs" t="Include" />
+                <e p="DecoratorLogCppExporter.cs" t="Include" />
+                <e p="DecoratorLoopCppExporter.cs" t="Include" />
+                <e p="DecoratorLoopUntilCppExporter.cs" t="Include" />
+                <e p="DecoratorTimeCppExporter.cs" t="Include" />
+                <e p="DecoratorWeightCppExporter.cs" t="Include" />
+              </e>
+              <e p="FSM" t="Include">
+                <e p="AlwaysTransitionCppExporter.cs" t="Include" />
+                <e p="StateCppExporter.cs" t="Include" />
+                <e p="TransitionConditionCppExporter.cs" t="Include" />
+                <e p="WaitFramesStateCppExporter.cs" t="Include" />
+                <e p="WaitStateCppExporter.cs" t="Include" />
+                <e p="WaitTransitionCppExporter.cs" t="Include" />
+              </e>
+              <e p="HTN" t="Include">
+                <e p="TaskCppExporter.cs" t="Include" />
+              </e>
+              <e p="NodeCppExporter.cs" t="Include" />
+            </e>
+            <e p="Cs" t="Include">
+              <e p="Actions" t="Include">
+                <e p="ActionCsExporter.cs" t="Include" />
+                <e p="AssignmentCsExporter.cs" t="Include" />
+                <e p="ComputeCsExporter.cs" t="Include" />
+                <e p="EndCsExporter.cs" t="Include" />
+                <e p="WaitCsExporter.cs" t="Include" />
+                <e p="WaitFramesCsExporter.cs" t="Include" />
+              </e>
+              <e p="AttachmentCsExporter.cs" t="Include" />
+              <e p="Attachments" t="Include">
+                <e p="AttachActionCsExporter.cs" t="Include" />
+                <e p="EffectorCsExporter.cs" t="Include" />
+                <e p="EventCsExporter.cs" t="Include" />
+                <e p="PreconditionCsExporter.cs" t="Include" />
+              </e>
+              <e p="Composites" t="Include">
+                <e p="ParallelCsExporter.cs" t="Include" />
+                <e p="QueryCsExporter.cs" t="Include" />
+                <e p="ReferencedBehaviorCsExporter.cs" t="Include" />
+                <e p="SelectorLoopCsExporter.cs" t="Include" />
+                <e p="SelectorProbabilityCsExporter.cs" t="Include" />
+                <e p="SelectorStochasticCsExporter.cs" t="Include" />
+                <e p="SequenceStochasticCsExporter.cs" t="Include" />
+              </e>
+              <e p="Conditions" t="Include">
+                <e p="ConditionCsExporter.cs" t="Include" />
+              </e>
+              <e p="Decorators" t="Include">
+                <e p="DecoratorCountCsExporter.cs" t="Include" />
+                <e p="DecoratorCsExporter.cs" t="Include" />
+                <e p="DecoratorFramesCsExporter.cs" t="Include" />
+                <e p="DecoratorIteratorCsExporter.cs" t="Include" />
+                <e p="DecoratorLogCsExporter.cs" t="Include" />
+                <e p="DecoratorLoopCsExporter.cs" t="Include" />
+                <e p="DecoratorLoopUntilCsExporter.cs" t="Include" />
+                <e p="DecoratorTimeCsExporter.cs" t="Include" />
+                <e p="DecoratorWeightCsExporter.cs" t="Include" />
+              </e>
+              <e p="FSM" t="Include">
+                <e p="AlwaysTransitionCsExporter.cs" t="Include" />
+                <e p="StateCsExporter.cs" t="Include" />
+                <e p="TransitionConditionCsExporter.cs" t="Include" />
+                <e p="WaitFramesStateCsExporter.cs" t="Include" />
+                <e p="WaitStateCsExporter.cs" t="Include" />
+                <e p="WaitTransitionCsExporter.cs" t="Include" />
+              </e>
+              <e p="HTN" t="Include">
+                <e p="TaskCsExporter.cs" t="Include" />
+              </e>
+              <e p="NodeCsExporter.cs" t="Include" />
+            </e>
+            <e p="NodeExporter.cs" t="Include" />
+          </e>
+          <e p="Nodes" t="Include">
+            <e p="Actions" t="Include">
+              <e p="Action.cs" t="Include" />
+              <e p="Assignment.cs" t="Include" />
+              <e p="Compute.cs" t="Include" />
+              <e p="ConnectorCondition.cs" t="Include" />
+              <e p="End.cs" t="Include" />
+              <e p="Noop.cs" t="Include" />
+              <e p="Wait.cs" t="Include" />
+              <e p="WaitforSignal.cs" t="Include" />
+              <e p="WaitFrames.cs" t="Include" />
+            </e>
+            <e p="Attachments" t="Include">
+              <e p="Effector.cs" t="Include" />
+              <e p="Event.cs" t="Include" />
+              <e p="Precondition.cs" t="Include" />
+              <e p="Predicate.cs" t="Include" />
+            </e>
+            <e p="Composites" t="Include">
+              <e p="IfElse.cs" t="Include" />
+              <e p="Parallel.cs" t="Include" />
+              <e p="Query.cs" t="Include" />
+              <e p="Selector.cs" t="Include" />
+              <e p="SelectorLoop.cs" t="Include" />
+              <e p="SelectorProbability.cs" t="Include" />
+              <e p="SelectorStochastic.cs" t="Include" />
+              <e p="Sequence.cs" t="Include" />
+              <e p="SequenceStochastic.cs" t="Include" />
+              <e p="WithPrecondition.cs" t="Include" />
+            </e>
+            <e p="Conditions" t="Include">
+              <e p="And.cs" t="Include" />
+              <e p="Condition.cs" t="Include" />
+              <e p="False.cs" t="Include" />
+              <e p="OperatorCondition.cs" t="Include" />
+              <e p="Or.cs" t="Include" />
+              <e p="True.cs" t="Include" />
+            </e>
+            <e p="Decorators" t="Include">
+              <e p="DecoratorAlwaysFailure.cs" t="Include" />
+              <e p="DecoratorAlwaysRunning.cs" t="Include" />
+              <e p="DecoratorAlwaysSuccess.cs" t="Include" />
+              <e p="DecoratorCount.cs" t="Include" />
+              <e p="DecoratorCountLimit.cs" t="Include" />
+              <e p="DecoratorFailureUntil.cs" t="Include" />
+              <e p="DecoratorFrames.cs" t="Include" />
+              <e p="DecoratorIterator.cs" t="Include" />
+              <e p="DecoratorLog.cs" t="Include" />
+              <e p="DecoratorLoop.cs" t="Include" />
+              <e p="DecoratorLoopUntil.cs" t="Include" />
+              <e p="DecoratorNot.cs" t="Include" />
+              <e p="DecoratorRepeat.cs" t="Include" />
+              <e p="DecoratorSuccessUntil.cs" t="Include" />
+              <e p="DecoratorTime.cs" t="Include" />
+              <e p="DecoratorWeight.cs" t="Include" />
+            </e>
+            <e p="FSM" t="Include">
+              <e p="AlwaysTransition.cs" t="Include" />
+              <e p="FSMReferencedBehavior.cs" t="Include" />
+              <e p="StartCondition.cs" t="Include" />
+              <e p="State.cs" t="Include" />
+              <e p="StateBase.cs" t="Include" />
+              <e p="TransitionCondition.cs" t="Include" />
+              <e p="WaitFramesState.cs" t="Include" />
+              <e p="WaitState.cs" t="Include" />
+              <e p="WaitTransition.cs" t="Include" />
+            </e>
+            <e p="HTN" t="Include">
+              <e p="Method.cs" t="Include" />
+              <e p="Task.cs" t="Include" />
+            </e>
+          </e>
+          <e p="NodeUI" t="Include">
+            <e p="AlwaysTransitionUIPolicy.cs" t="Include" />
+            <e p="AssignmentUIPolicy.cs" t="Include" />
+            <e p="ComputeUIPolicy.cs" t="Include" />
+            <e p="ConditionUIPolicy.cs" t="Include" />
+            <e p="EffectorUIPolicy.cs" t="Include" />
+            <e p="EndUIPolicy.cs" t="Include" />
+            <e p="ParallelUIPolicy.cs" t="Include" />
+            <e p="PreconditionUIPolicy.cs" t="Include" />
+            <e p="TransitionUIPolicy.cs" t="Include" />
+          </e>
+          <e p="obj" t="ExcludeRecursive" />
+          <e p="PluginBehaviac.cs" t="Include" />
+          <e p="PluginBehaviac.csproj" t="IncludeRecursive" />
+          <e p="Properties" t="Include">
+            <e p="AssemblyInfo.cs" t="Include" />
+            <e p="Resources.Designer.cs" t="Include" />
+            <e p="Resources.resx" t="Include" />
+            <e p="Resources.zh-CN.resx" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="compute.png" t="Include" />
+            <e p="goal_icon.png" t="Include" />
+            <e p="ICON__0000_46.png" t="Include" />
+            <e p="ICON__0001_45.png" t="Include" />
+            <e p="ICON__0003_43.png" t="Include" />
+            <e p="ICON__0004_42.png" t="Include" />
+            <e p="ICON__0007_39.png" t="Include" />
+            <e p="ICON__0008_38.png" t="Include" />
+            <e p="ICON__0016_30.png" t="Include" />
+            <e p="ICON__0018_28.png" t="Include" />
+            <e p="ICON__0019_27.png" t="Include" />
+            <e p="ICON__0024_22.png" t="Include" />
+            <e p="ICON__0026_20.png" t="Include" />
+            <e p="ICON__0028_18.png" t="Include" />
+            <e p="method.png" t="Include" />
+            <e p="postaction.png" t="Include" />
+            <e p="preaction.png" t="Include" />
+            <e p="repeat.png" t="Include" />
+            <e p="state.png" t="Include" />
+            <e p="task.png" t="Include" />
+            <e p="transition.png" t="Include" />
+            <e p="try.png" t="Include" />
+          </e>
+        </e>
+      </e>
+    </e>
+  </component>
+</project>
