@@ -1,73 +1,100 @@
-﻿/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Tencent is pleased to support the open source community by making behaviac available.
-//
-// Copyright (C) 2015-2017 THL A29 Limited, a Tencent company. All rights reserved.
-//
-// Licensed under the BSD 3-Clause License (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at http://opensource.org/licenses/BSD-3-Clause
-//
-// Unless required by applicable law or agreed to in writing, software distributed under the License is
-// distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and limitations under the License.
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+﻿using System;
 using System.Windows.Forms;
-using System.Net;
-using System.Net.Sockets;
+using System.Diagnostics;
 
 namespace Behaviac.Design
 {
     public partial class ConnectDialog : Form
     {
+        private uint m_Port;
+
         public ConnectDialog(bool useLocalIp, string ip, int portNr)
         {
             InitializeComponent();
 
-            localIPCheckBox.Checked = useLocalIp;
-            tbServer.Text = !useLocalIp && Utilities.IPOnlyNumbersAndDots(ip) ? ip : Utilities.GetLocalIP();
-            tbServer.Enabled = !useLocalIp;
-            tbPort.Text = portNr.ToString();
+            LoadCurrentUnityInstances();
+
+            listView1.Select();
+
+            if (listView1.Items.Count > 0)
+            {
+                listView1.Items[0].Focused = true;
+                listView1.Items[0].Selected = true;
+            }
+            else
+            {
+                btnOk.Enabled = false;
+            }
+
+//            localIPCheckBox.Checked = useLocalIp;
+//            tbServer.Text = !useLocalIp && Utilities.IPOnlyNumbersAndDots(ip) ? ip : Utilities.GetLocalIP();
+//            tbServer.Enabled = !useLocalIp;
+//            tbPort.Text = portNr.ToString();
+        }
+
+        private void LoadCurrentUnityInstances()
+        {
+            var processes = Process.GetProcessesByName("unity");
+            foreach (var p in processes)
+            {
+                var item = GetItemFromProcess(p);
+                listView1.Items.Add(item);
+            }
+        }
+
+        ListViewItem GetItemFromProcess(Process p)
+        {
+            var item = new ListViewItem(p.MainWindowTitle);
+            var port = 57000 + p.Id % 1000;
+            item.SubItems.Add(port.ToString());
+
+            return item;
         }
 
         public bool UseLocalIP()
         {
-            return localIPCheckBox.Checked;
+            return true;
         }
 
         public String GetServer()
         {
-            return Utilities.IPOnlyNumbersAndDots(tbServer.Text) ? tbServer.Text : Utilities.GetIP(tbServer.Text);
+//            return Utilities.IPOnlyNumbersAndDots(tbServer.Text) ? tbServer.Text : Utilities.GetIP(tbServer.Text);
+            return "127.0.0.1";
         }
 
         public int GetPort()
         {
-            return Convert.ToInt32(tbPort.Text);
+            if (listView1.SelectedItems.Count > 0)
+                return int.Parse(listView1.SelectedItems[0].SubItems[1].Text);
+            return Convert.ToInt32(m_Port);
         }
 
-        private void tbPort_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
+//        private void tbPort_KeyPress(object sender, KeyPressEventArgs e)
+//        {
+//            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+//            {
+//                e.Handled = true;
+//            }
+//        }
+//
+//        private void localIPCheckBox_CheckedChanged(object sender, EventArgs e)
+//        {
+//            if (UseLocalIP())
+//            {
+////                tbServer.Text = Utilities.GetLocalIP();
+////                tbServer.Enabled = false;
+//            }
+//        }
 
-        private void localIPCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void OnItemSelected(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            if (this.UseLocalIP())
+            if (listView1.SelectedItems.Count <= 0)
             {
-                tbServer.Text = Utilities.GetLocalIP();
-                tbServer.Enabled = false;
+                btnOk.Enabled = false;
             }
             else
             {
-                tbServer.Enabled = true;
+                btnOk.Enabled = true;
             }
         }
     }

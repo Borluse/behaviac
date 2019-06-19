@@ -42,88 +42,46 @@ namespace Behaviac.Design
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectDialog));
-            this.tbServer = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.tbPort = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Behaviac.Design.ConnectDialog));
             this.btnCancel = new System.Windows.Forms.Button();
-            this.localIPCheckBox = new System.Windows.Forms.CheckBox();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.List_Name = new System.Windows.Forms.ColumnHeader();
+            this.List_Port = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
-            //
-            // tbServer
-            //
-            resources.ApplyResources(this.tbServer, "tbServer");
-            this.tbServer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.tbServer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbServer.ForeColor = System.Drawing.Color.LightGray;
-            this.tbServer.Name = "tbServer";
-            //
-            // label1
-            //
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            //
-            // btnOk
-            //
-            resources.ApplyResources(this.btnOk, "btnOk");
-            this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
-            this.btnOk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
-            this.btnOk.Name = "btnOk";
-            this.btnOk.UseVisualStyleBackColor = false;
-            //
-            // tbPort
-            //
-            resources.ApplyResources(this.tbPort, "tbPort");
-            this.tbPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.tbPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbPort.ForeColor = System.Drawing.Color.LightGray;
-            this.tbPort.Name = "tbPort";
-            this.tbPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPort_KeyPress);
-            //
-            // label2
-            //
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            //
-            // btnCancel
-            //
-            resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = false;
-            //
-            // localIPCheckBox
-            //
-            resources.ApplyResources(this.localIPCheckBox, "localIPCheckBox");
-            this.localIPCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.localIPCheckBox.Checked = true;
-            this.localIPCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.localIPCheckBox.ForeColor = System.Drawing.Color.LightGray;
-            this.localIPCheckBox.Name = "localIPCheckBox";
-            this.localIPCheckBox.UseVisualStyleBackColor = false;
-            this.localIPCheckBox.CheckedChanged += new System.EventHandler(this.localIPCheckBox_CheckedChanged);
-            //
-            // ConnectDialog
-            //
+            this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
+            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.btnOk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.btnOk, "btnOk");
+            this.btnOk.Name = "btnOk";
+            this.btnOk.UseVisualStyleBackColor = false;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {this.List_Name, this.List_Port});
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
+            resources.ApplyResources(this.listView1, "listView1");
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.OnItemSelected);
+            resources.ApplyResources(this.List_Name, "List_Name");
+            resources.ApplyResources(this.List_Port, "List_Port");
             this.AcceptButton = this.btnOk;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
             this.CancelButton = this.btnCancel;
-            this.Controls.Add(this.localIPCheckBox);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.tbPort);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbServer);
             this.ForeColor = System.Drawing.Color.LightGray;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -131,18 +89,14 @@ namespace Behaviac.Design
             this.Name = "ConnectDialog";
             this.ShowInTaskbar = false;
             this.ResumeLayout(false);
-            this.PerformLayout();
-
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox tbServer;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.TextBox tbPort;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.CheckBox localIPCheckBox;
+        private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader List_Name;
+        private System.Windows.Forms.ColumnHeader List_Port;
     }
 }

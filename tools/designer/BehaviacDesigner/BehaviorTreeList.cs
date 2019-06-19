@@ -3045,7 +3045,7 @@ namespace Behaviac.Design
             return ver;
         }
 
-        private const string url_server = "\\\\tencent.com\\tfs\\部门目录\\IEG互动娱乐事业群\\互动娱乐研发部\\引擎组\\Tag\\Behaviac\\";
+        private const string url_server = "\\\\tencent.com\\tfs\\閮ㄩ棬鐩綍\\IEG浜掑姩濞变箰浜嬩笟缇\浜掑姩濞变箰鐮斿彂閮╘\寮曟搸缁刓\Tag\\Behaviac\\";
         private const string urlVersionFile = url_server + "version.txt";
 
         private string TrimVersionString(string verStr)
