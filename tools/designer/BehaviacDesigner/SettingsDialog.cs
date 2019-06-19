@@ -103,5 +103,15 @@ namespace Behaviac.Design
                 MainWindow.Instance.ResetLayout();
             }
         }
+
+        private void SettingsDialog_Load(object sender, EventArgs e)
+        {
+            foreach (var ex in Plugin.Exporters)
+            {
+                var item = new ListViewItem(ex.Description);
+
+                listView1.Items.Add(item);
+            }
+        }
     }
 }

@@ -126,10 +126,13 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="acceptButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>181, 279</value>
+    <value>543, 317</value>
+  </data>
+  <data name="acceptButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="acceptButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+    <value>100, 26</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="acceptButton.TabIndex" type="System.Int32, mscorlib">
@@ -148,16 +151,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;acceptButton.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="cancelButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Popup</value>
   </data>
   <data name="cancelButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 279</value>
+    <value>716, 317</value>
+  </data>
+  <data name="cancelButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="cancelButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+    <value>100, 26</value>
   </data>
   <data name="cancelButton.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -175,16 +181,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cancelButton.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="nodeToolTipsCheckBox.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>18</value>
   </data>
   <data name="nodeToolTipsCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 44</value>
+    <value>16, 55</value>
+  </data>
+  <data name="nodeToolTipsCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="nodeToolTipsCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 16</value>
+    <value>181, 19</value>
   </data>
   <data name="nodeToolTipsCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -202,16 +208,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;nodeToolTipsCheckBox.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="showControlsCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="showControlsCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 67</value>
+    <value>16, 84</value>
+  </data>
+  <data name="showControlsCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="showControlsCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 16</value>
+    <value>229, 19</value>
   </data>
   <data name="showControlsCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -229,16 +238,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;showControlsCheckBox.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="checkBoxChecktheLatest.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBoxChecktheLatest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 91</value>
+    <value>16, 114</value>
+  </data>
+  <data name="checkBoxChecktheLatest.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="checkBoxChecktheLatest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 16</value>
+    <value>253, 19</value>
   </data>
   <data name="checkBoxChecktheLatest.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -256,16 +268,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBoxChecktheLatest.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="dumpConnectDataCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="dumpConnectDataCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 115</value>
+    <value>16, 144</value>
+  </data>
+  <data name="dumpConnectDataCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="dumpConnectDataCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>228, 16</value>
+    <value>301, 19</value>
   </data>
   <data name="dumpConnectDataCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -283,7 +298,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;dumpConnectDataCheckBox.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="languageLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -292,10 +307,13 @@
     <value>NoControl</value>
   </data>
   <data name="languageLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 15</value>
+    <value>13, 19</value>
+  </data>
+  <data name="languageLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="languageLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 12</value>
+    <value>79, 15</value>
   </data>
   <data name="languageLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -313,7 +331,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;languageLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="languageComboBox.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Popup</value>
@@ -328,10 +346,13 @@
     <value>Chinese</value>
   </data>
   <data name="languageComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 12</value>
+    <value>101, 15</value>
+  </data>
+  <data name="languageComboBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="languageComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
+    <value>132, 23</value>
   </data>
   <data name="languageComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -346,7 +367,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;languageComboBox.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="showVersionCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -355,10 +376,13 @@
     <value>NoControl</value>
   </data>
   <data name="showVersionCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 137</value>
+    <value>16, 171</value>
+  </data>
+  <data name="showVersionCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="showVersionCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 16</value>
+    <value>125, 19</value>
   </data>
   <data name="showVersionCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -376,7 +400,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;showVersionCheckBox.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="useBasicDisplayNameCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -385,10 +409,13 @@
     <value>NoControl</value>
   </data>
   <data name="useBasicDisplayNameCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 161</value>
+    <value>16, 201</value>
+  </data>
+  <data name="useBasicDisplayNameCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="useBasicDisplayNameCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>276, 16</value>
+    <value>365, 19</value>
   </data>
   <data name="useBasicDisplayNameCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -406,7 +433,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;useBasicDisplayNameCheckBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="showProfileCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -415,10 +442,13 @@
     <value>NoControl</value>
   </data>
   <data name="showProfileCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 185</value>
+    <value>16, 231</value>
+  </data>
+  <data name="showProfileCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="showProfileCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 16</value>
+    <value>437, 19</value>
   </data>
   <data name="showProfileCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -436,16 +466,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;showProfileCheckBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="checkBoxTweatAsError.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBoxTweatAsError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 209</value>
+    <value>16, 261</value>
+  </data>
+  <data name="checkBoxTweatAsError.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="checkBoxTweatAsError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 16</value>
+    <value>405, 19</value>
   </data>
   <data name="checkBoxTweatAsError.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -463,7 +496,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBoxTweatAsError.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="limitDisplayLengthCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -472,10 +505,13 @@
     <value>NoControl</value>
   </data>
   <data name="limitDisplayLengthCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 234</value>
+    <value>16, 292</value>
+  </data>
+  <data name="limitDisplayLengthCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="limitDisplayLengthCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 16</value>
+    <value>325, 19</value>
   </data>
   <data name="limitDisplayLengthCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -493,13 +529,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;limitDisplayLengthCheckBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="displayLengthNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 233</value>
+    <value>353, 291</value>
+  </data>
+  <data name="displayLengthNumericUpDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="displayLengthNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+    <value>100, 25</value>
   </data>
   <data name="displayLengthNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -514,7 +553,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;displayLengthNumericUpDown.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="themeComboBox.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Popup</value>
@@ -526,10 +565,13 @@
     <value>Modern</value>
   </data>
   <data name="themeComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 12</value>
+    <value>321, 15</value>
+  </data>
+  <data name="themeComboBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="themeComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
+    <value>132, 23</value>
   </data>
   <data name="themeComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -544,7 +586,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;themeComboBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="themLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -553,10 +595,13 @@
     <value>NoControl</value>
   </data>
   <data name="themLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 15</value>
+    <value>259, 19</value>
+  </data>
+  <data name="themLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="themLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 12</value>
+    <value>55, 15</value>
   </data>
   <data name="themLabel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -574,7 +619,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;themLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="resetLayoutButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -583,10 +628,13 @@
     <value>NoControl</value>
   </data>
   <data name="resetLayoutButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 44</value>
+    <value>261, 55</value>
+  </data>
+  <data name="resetLayoutButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="resetLayoutButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 22</value>
+    <value>195, 28</value>
   </data>
   <data name="resetLayoutButton.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -604,7 +652,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;resetLayoutButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="concurrentProcessBehaviorsCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -613,10 +661,13 @@
     <value>NoControl</value>
   </data>
   <data name="concurrentProcessBehaviorsCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 259</value>
+    <value>16, 324</value>
+  </data>
+  <data name="concurrentProcessBehaviorsCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="concurrentProcessBehaviorsCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 16</value>
+    <value>253, 19</value>
   </data>
   <data name="concurrentProcessBehaviorsCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -637,16 +688,70 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;concurrentProcessBehaviorsCheckBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>501, 19</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 15</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Fast Export :</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="listView1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>503, 59</value>
+  </data>
+  <data name="listView1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>337, 220</value>
+  </data>
+  <data name="listView1.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;listView1.Name" xml:space="preserve">
+    <value>listView1</value>
+  </data>
+  <data name="&gt;&gt;listView1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listView1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;listView1.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="Choose.Text" xml:space="preserve">
+    <value>File Type</value>
+  </data>
+  <data name="Choose.Width" type="System.Int32, mscorlib">
+    <value>312</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
+    <value>120, 120</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>348, 306</value>
+    <value>877, 392</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5513,11 +5618,20 @@
         AYfw4AMP8DAGD/AMGA/+AYB//4AA//+AAP//zjv/
 </value>
   </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="&gt;&gt;Choose.Name" xml:space="preserve">
+    <value>Choose</value>
+  </data>
+  <data name="&gt;&gt;Choose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SettingsDialog</value>

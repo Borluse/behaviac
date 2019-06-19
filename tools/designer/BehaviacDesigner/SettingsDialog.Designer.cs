@@ -61,6 +61,9 @@ namespace Behaviac.Design
             this.themLabel = new System.Windows.Forms.Label();
             this.resetLayoutButton = new System.Windows.Forms.Button();
             this.concurrentProcessBehaviorsCheckBox = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.Choose = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.displayLengthNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,9 +90,9 @@ namespace Behaviac.Design
             // 
             // nodeToolTipsCheckBox
             // 
-            resources.ApplyResources(this.nodeToolTipsCheckBox, "nodeToolTipsCheckBox");
             this.nodeToolTipsCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.nodeToolTipsCheckBox.ForeColor = System.Drawing.Color.LightGray;
+            resources.ApplyResources(this.nodeToolTipsCheckBox, "nodeToolTipsCheckBox");
             this.nodeToolTipsCheckBox.Name = "nodeToolTipsCheckBox";
             this.nodeToolTipsCheckBox.UseVisualStyleBackColor = false;
             // 
@@ -228,14 +231,35 @@ namespace Behaviac.Design
             this.concurrentProcessBehaviorsCheckBox.Name = "concurrentProcessBehaviorsCheckBox";
             this.concurrentProcessBehaviorsCheckBox.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // listView1
+            // 
+            this.listView1.CheckBoxes = true;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Choose});
+            resources.ApplyResources(this.listView1, "listView1");
+            this.listView1.Name = "listView1";
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // Choose
+            // 
+            resources.ApplyResources(this.Choose, "Choose");
+            // 
             // SettingsDialog
             // 
             this.AcceptButton = this.acceptButton;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.CancelButton = this.cancelButton;
             this.ControlBox = false;
+            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.concurrentProcessBehaviorsCheckBox);
             this.Controls.Add(this.resetLayoutButton);
             this.Controls.Add(this.themeComboBox);
@@ -254,11 +278,13 @@ namespace Behaviac.Design
             this.Controls.Add(this.nodeToolTipsCheckBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.acceptButton);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.ForeColor = System.Drawing.Color.LightGray;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingsDialog";
+            this.Load += new System.EventHandler(this.SettingsDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.displayLengthNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -285,5 +311,8 @@ namespace Behaviac.Design
         private System.Windows.Forms.Label themLabel;
         private System.Windows.Forms.Button resetLayoutButton;
         private System.Windows.Forms.CheckBox concurrentProcessBehaviorsCheckBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader Choose;
     }
 }
