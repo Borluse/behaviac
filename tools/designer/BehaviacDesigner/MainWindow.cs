@@ -1524,6 +1524,24 @@ namespace Behaviac.Design
 
             return false;
         }
+        
+        public void FastExportBehavior()
+        {
+            //当前非设计模式
+            if (Plugin.EditMode != EditModes.Design) return;
+            //没有正在打开的行为树
+            if (BehaviorTreeViewDock.LastFocused == null) return;
+            
+            var behaviorTreeView = BehaviorTreeViewDock.LastFocused.BehaviorTreeView;
+
+            //空树不导出
+            if (behaviorTreeView?.RootNode == null) return;
+            // Only non-prefab files can be exported.
+            if (behaviorTreeList == null || !isPrefabFile(behaviorTreeView.RootNode.Filename))
+            {
+                behaviorTreeView.FastExport();
+            }
+        }
 
         public void ExportBehavior(bool allBehaviors, string format = "")
         {
@@ -1895,6 +1913,12 @@ namespace Behaviac.Design
             this.ExportBehavior(false);
         }
 
+
+        private void FastExportBehaviorMenuItem_Click(object sender, EventArgs e)
+        {
+            this.FastExportBehavior();
+        }
+
         private void closeBehaviorMenuItem_Click(object sender, EventArgs e)
         {
             this.CloseBehavior(false);
@@ -2191,5 +2215,6 @@ namespace Behaviac.Design
             BehaviorTreeViewDock.RefreshAll();
             UpdateUIState(Plugin.EditMode);
         }
+
     }
 }

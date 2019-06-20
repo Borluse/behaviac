@@ -422,5 +422,16 @@ namespace Behaviac.Design.Properties {
                 this["ConcurrentProcessBehaviors"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection FastExportFileType {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["FastExportFileType"]));
+            }
+            set {
+                this["FastExportFileType"] = value;
+            }
+        }
     }
 }

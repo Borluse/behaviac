@@ -148,6 +148,7 @@ namespace Behaviac.Design
             this.getLatestVersionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fastExportBehaviorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -239,6 +240,7 @@ namespace Behaviac.Design
             this.saveBehaviorMenuItem,
             this.saveAsBehaviorMenuItem,
             this.exportBehaviorMenuItem,
+            this.fastExportBehaviorMenuItem,
             this.closeBehaviorMenuItem,
             this.saveAllMenuItem,
             this.exportAllMenuItem,
@@ -812,6 +814,13 @@ namespace Behaviac.Design
             this.aboutMenuItem.Name = "aboutMenuItem";
             this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
             // 
+            // fastExportBehaviorMenuItem
+            // 
+            this.fastExportBehaviorMenuItem.BackColor = System.Drawing.Color.DarkGray;
+            this.fastExportBehaviorMenuItem.Name = "fastExportBehaviorMenuItem";
+            resources.ApplyResources(this.fastExportBehaviorMenuItem, "fastExportBehaviorMenuItem");
+            this.fastExportBehaviorMenuItem.Click += new System.EventHandler(this.FastExportBehaviorMenuItem_Click);
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -901,6 +910,6 @@ namespace Behaviac.Design
         private System.Windows.Forms.ToolStripMenuItem showNodeIdToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showProfilingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem overviewMenuItem;
-
+        private System.Windows.Forms.ToolStripMenuItem fastExportBehaviorMenuItem;
     }
 }

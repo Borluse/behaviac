@@ -13,6 +13,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows.Forms;
 using Behaviac.Design.Properties;
@@ -39,7 +40,7 @@ namespace Behaviac.Design
             showProfileCheckBox.Checked = Settings.Default.ShowProfilingInfo;
             checkBoxTweatAsError.Checked = Settings.Default.NoResultTreatAsError;
             limitDisplayLengthCheckBox.Checked = Settings.Default.IsDisplayLengthLimited;
-            displayLengthNumericUpDown.Value = (decimal)Settings.Default.LimitedDisplayLength;
+            displayLengthNumericUpDown.Value = (decimal) Settings.Default.LimitedDisplayLength;
             concurrentProcessBehaviorsCheckBox.Checked = Settings.Default.ConcurrentProcessBehaviors;
 
             base.OnShown(e);
@@ -51,7 +52,7 @@ namespace Behaviac.Design
             bool basicDisplayNameChanged = (Settings.Default.UseBasicDisplayName != useBasicDisplayNameCheckBox.Checked);
             bool showVersionChanged = (Settings.Default.ShowVersionInfo != showVersionCheckBox.Checked);
             bool limitDisplayLengthChanged = (Settings.Default.IsDisplayLengthLimited != limitDisplayLengthCheckBox.Checked) ||
-                                             (Settings.Default.LimitedDisplayLength != (int)displayLengthNumericUpDown.Value);
+                                             (Settings.Default.LimitedDisplayLength != (int) displayLengthNumericUpDown.Value);
             bool languageChanged = (Settings.Default.Language != languageComboBox.SelectedIndex);
 
             Settings.Default.Language = languageComboBox.SelectedIndex;
@@ -64,10 +65,10 @@ namespace Behaviac.Design
             Settings.Default.UseBasicDisplayName = useBasicDisplayNameCheckBox.Checked;
             Settings.Default.NoResultTreatAsError = checkBoxTweatAsError.Checked;
             Settings.Default.IsDisplayLengthLimited = limitDisplayLengthCheckBox.Checked;
-            Settings.Default.LimitedDisplayLength = (int)displayLengthNumericUpDown.Value;
+            Settings.Default.LimitedDisplayLength = (int) displayLengthNumericUpDown.Value;
             Settings.Default.ConcurrentProcessBehaviors = concurrentProcessBehaviorsCheckBox.Checked;
 
-            Nodes.Node.ColorTheme = (Nodes.Node.ColorThemes)Settings.Default.ColorTheme;
+            Nodes.Node.ColorTheme = (Nodes.Node.ColorThemes) Settings.Default.ColorTheme;
             Behaviac.Design.Nodes.Action.NoResultTreatAsError = Settings.Default.NoResultTreatAsError;
 
             if (Settings.Default.ShowProfilingInfo != showProfileCheckBox.Checked)
@@ -94,6 +95,14 @@ namespace Behaviac.Design
                 MessageBox.Show(Resources.LanguageChangedWarning, Resources.Warning, MessageBoxButtons.OK);
                 //MainWindow.Instance.ReloadLayout();
             }
+            
+            Settings.Default.FastExportFileType.Clear();
+
+
+            foreach (ListViewItem it in listView1.CheckedItems)
+            {
+                Settings.Default.FastExportFileType.Add(it.Text);
+            }
         }
 
         private void resetLayoutButton_Click(object sender, EventArgs e)
@@ -106,9 +115,18 @@ namespace Behaviac.Design
 
         private void SettingsDialog_Load(object sender, EventArgs e)
         {
+            var fast = Settings.Default.FastExportFileType;
+            if (fast == null)
+                Settings.Default.FastExportFileType = new StringCollection();
+
             foreach (var ex in Plugin.Exporters)
             {
-                var item = new ListViewItem(ex.Description);
+                var item = new ListViewItem(ex.ID);
+
+                if (fast != null && fast.Contains(ex.ID))
+                {
+                    item.Checked = true;
+                }
 
                 listView1.Items.Add(item);
             }

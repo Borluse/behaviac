@@ -1,30 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Copyright (c) 2009, Daniel Kollmann
-// All rights reserved.
-//
-// Redistribution and use in source and binary forms, with or without modification, are permitted
-// provided that the following conditions are met:
-//
-// - Redistributions of source code must retain the above copyright notice, this list of conditions
-//   and the following disclaimer.
-//
-// - Redistributions in binary form must reproduce the above copyright notice, this list of
-//   conditions and the following disclaimer in the documentation and/or other materials provided
-//   with the distribution.
-//
-// - Neither the name of Daniel Kollmann nor the names of its contributors may be used to endorse
-//   or promote products derived from this software without specific prior written permission.
-//
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-// IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-// FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
-// CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
-// WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // The above software in this distribution may have been modified by THL A29 Limited ("Tencent Modifications").
 //
@@ -33,17 +6,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Data;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
 using Behaviac.Design.Attributes;
 using Behaviac.Design.Data;
 using Behaviac.Design.Nodes;
-using Behaviac.Design.Network;
 using Behaviac.Design.Properties;
 
 namespace Behaviac.Design
@@ -59,44 +27,44 @@ namespace Behaviac.Design
         {
             InitializeComponent();
 
-            this.Disposed += new EventHandler(BehaviorTreeView_Disposed);
+            Disposed += BehaviorTreeView_Disposed;
 
-            this.toolTipTimer.Interval = 1000;
-            this.toolTipTimer.Tick += new EventHandler(toolTipTimer_Tick);
+            toolTipTimer.Interval = 1000;
+            toolTipTimer.Tick += toolTipTimer_Tick;
         }
 
         private void BehaviorTreeView_Disposed(object sender, EventArgs e)
         {
-            this.Disposed -= BehaviorTreeView_Disposed;
+            Disposed -= BehaviorTreeView_Disposed;
 
-            if (this.toolTip != null)
+            if (toolTip != null)
             {
-                this.toolTip.Dispose();
-                this.toolTip = null;
+                toolTip.Dispose();
+                toolTip = null;
             }
         }
 
         private void toolTipTimer_Tick(object sender, EventArgs e)
         {
-            this.toolTipTimer.Stop();
+            toolTipTimer.Stop();
 
-            if (_currentNode != null && this.toolTip != null)
+            if (_currentNode != null && toolTip != null)
             {
                 if (_currentExpandNode != null)
                 {
                     if (_nodeToolTip == Resources.ExpandAllInfo)
                     {
-                        this.toolTip.Show(_nodeToolTip, this, new Point((int)_currentNode.DisplayBoundingBox.X - 20, (int)_currentNode.DisplayBoundingBox.Y - 5 - 18));
+                        toolTip.Show(_nodeToolTip, this, new Point((int) _currentNode.DisplayBoundingBox.X - 20, (int) _currentNode.DisplayBoundingBox.Y - 5 - 18));
                     }
                     else
                     {
-                        this.toolTip.Show(_nodeToolTip, this, new Point((int)(_currentNode.DisplayBoundingBox.X + _currentNode.DisplayBoundingBox.Width) - 20, (int)_currentNode.DisplayBoundingBox.Y - 5 - 18));
+                        toolTip.Show(_nodeToolTip, this, new Point((int) (_currentNode.DisplayBoundingBox.X + _currentNode.DisplayBoundingBox.Width) - 20, (int) _currentNode.DisplayBoundingBox.Y - 5 - 18));
                     }
                 }
                 else
                 {
                     string[] tokens = _nodeToolTip.Split('\n');
-                    this.toolTip.Show(_nodeToolTip, this, new Point((int)_currentNode.DisplayBoundingBox.X - 20, (int)_currentNode.DisplayBoundingBox.Y - 5 - 18 * tokens.Length));
+                    toolTip.Show(_nodeToolTip, this, new Point((int) _currentNode.DisplayBoundingBox.X - 20, (int) _currentNode.DisplayBoundingBox.Y - 5 - 18 * tokens.Length));
                 }
             }
         }
@@ -105,7 +73,7 @@ namespace Behaviac.Design
         {
             base.OnCreateControl();
 
-            this.ReadOnly = (Plugin.EditMode != EditModes.Design);
+            ReadOnly = Plugin.EditMode != EditModes.Design;
 
             ParentForm.FormClosing += ParentForm_FormClosing;
             DesignerPropertyEditor.PropertyChanged += RefreshProperty;
@@ -113,12 +81,10 @@ namespace Behaviac.Design
         }
 
         private bool _saveBehaviorWhenClosing = true;
+
         public bool SaveBehaviorWhenClosing
         {
-            set
-            {
-                _saveBehaviorWhenClosing = value;
-            }
+            set { _saveBehaviorWhenClosing = value; }
         }
 
         private void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -131,11 +97,11 @@ namespace Behaviac.Design
             if (_saveBehaviorWhenClosing)
             {
                 bool[] result;
-                List<BehaviorNode> behaviors = new List<BehaviorNode>()
+                List<BehaviorNode> behaviors = new List<BehaviorNode>
                 {
                     RootNode
                 };
-                e.Cancel = (FileManagers.SaveResult.Cancelled == MainWindow.Instance.SaveBehaviors(behaviors, out result));
+                e.Cancel = FileManagers.SaveResult.Cancelled == MainWindow.Instance.SaveBehaviors(behaviors, out result);
 
                 if (e.Cancel)
                 {
@@ -187,7 +153,7 @@ namespace Behaviac.Design
         /// <summary>
         /// Holds the instance of the error check dialogue for this view/behaviour.
         /// </summary>
-        private static ErrorCheckDialog _errorCheckDialog = null;
+        private static ErrorCheckDialog _errorCheckDialog;
 
         /// <summary>
         /// The node layout manager used to layout the behaviour and its children.
@@ -220,30 +186,25 @@ namespace Behaviac.Design
         private Pen _edgePenReadOnly = new Pen(Brushes.LightGray, 3.0f);
 
         private NodeViewData _rootNodeView;
+
         public NodeViewData RootNodeView
         {
-            get
-            {
-                return _rootNodeView;
-            }
+            get { return _rootNodeView; }
         }
 
         /// <summary>
         /// The behaviour visualised in this view.
         /// </summary>
-        public Nodes.BehaviorNode RootNode
+        public BehaviorNode RootNode
         {
-            get
-            {
-                return (_rootNodeView != null) ? _rootNodeView.RootBehavior : null;
-            }
+            get { return _rootNodeView != null ? _rootNodeView.RootBehavior : null; }
 
             set
             {
                 try
                 {
                     // assign the new behaviour
-                    _rootNodeView = ((Node)value).CreateNodeViewData(null, value);
+                    _rootNodeView = ((Node) value).CreateNodeViewData(null, value);
                     _nodeLayoutManager = new NodeLayoutManager(_rootNodeView, _edgePen, _edgePenSelected, _edgePenHighlighted, _edgePenUpdate, _edgePenReadOnly, false);
 
                     // register the view to be updated when any referenced behaviour changes
@@ -262,30 +223,30 @@ namespace Behaviac.Design
             }
         }
 
-        private void UndoQueue_ModifyNodeHandler(Nodes.BehaviorNode behavior, bool reference)
+        private void UndoQueue_ModifyNodeHandler(BehaviorNode behavior, bool reference)
         {
-            if (this.RootNode == behavior)
+            if (RootNode == behavior)
             {
                 //_behaviorTreeList.TriggerShowBehavior(behavior);
-                this.Redraw();
+                Redraw();
 
                 if (!reference)
                 {
                     SelectedNode = null;
-                    PropertiesDock.InspectObject(this.RootNode, null);
+                    PropertiesDock.InspectObject(RootNode, null);
 
-                    if (this.RootNode.AgentType != null)
+                    if (RootNode.AgentType != null)
                     {
-                        this.RootNode.AgentType.ResetPars(((Behavior)this.RootNode).LocalVars);
+                        RootNode.AgentType.ResetPars(((Behavior) RootNode).LocalVars);
                     }
 
                     if (MetaStoreDock.IsVisible())
                     {
-                        MetaStoreDock.Inspect(this.Parent as BehaviorTreeViewDock);
+                        MetaStoreDock.Inspect(Parent as BehaviorTreeViewDock);
                     }
 
-                    this.ParentForm.Show();
-                    this.ParentForm.Focus();
+                    ParentForm.Show();
+                    ParentForm.Focus();
                 }
             }
         }
@@ -298,10 +259,10 @@ namespace Behaviac.Design
         {
             LayoutChanged();
 
-            if (this.RootNodeView != null)
+            if (RootNodeView != null)
             {
                 List<NodeViewData> allNodeViewDatas = new List<NodeViewData>();
-                this.RootNodeView.FindNodeViewDatas(node, ref allNodeViewDatas);
+                RootNodeView.FindNodeViewDatas(node, ref allNodeViewDatas);
 
                 if (allNodeViewDatas.Count > 0)
                 {
@@ -319,29 +280,26 @@ namespace Behaviac.Design
         /// <summary>
         /// Used to prevent any movment in the graph when the focus was lost.
         /// </summary>
-        private bool _lostFocus = false;
+        private bool _lostFocus;
 
         /// <summary>
         /// Defines if the last mouse position should be kept.
         /// </summary>
-        private bool _maintainMousePosition = false;
+        private bool _maintainMousePosition;
 
         /// <summary>
         /// Defines if the position of a node should be kept.
         /// </summary>
-        private NodeViewData _maintainNodePosition = null;
+        private NodeViewData _maintainNodePosition;
 
-        private NodeViewData _selectedNode = null;
+        private NodeViewData _selectedNode;
 
         /// <summary>
         /// The currently selected node.
         /// </summary>
         public NodeViewData SelectedNode
         {
-            get
-            {
-                return _selectedNode;
-            }
+            get { return _selectedNode; }
 
             set
             {
@@ -357,11 +315,11 @@ namespace Behaviac.Design
             }
         }
 
-        HighlightBreakPoint _highlightBreakPoint = null;
-        private List<string> _highlightedNodeIds = null;
-        private List<string> _updatedNodeIds = null;
-        private List<string> _highlightedTransitionIds = null;
-        private Dictionary<string, FrameStatePool.NodeProfileInfos.ProfileInfo> _profileInfos = null;
+        HighlightBreakPoint _highlightBreakPoint;
+        private List<string> _highlightedNodeIds;
+        private List<string> _updatedNodeIds;
+        private List<string> _highlightedTransitionIds;
+        private Dictionary<string, FrameStatePool.NodeProfileInfos.ProfileInfo> _profileInfos;
 
         public void ClearHighlights()
         {
@@ -383,7 +341,7 @@ namespace Behaviac.Design
 
         public void SetHighlights(List<string> highlightedTransitionIds, List<string> highlightedNodeIds, List<string> updatedNodeIds, HighlightBreakPoint highlightBreakPoint, Dictionary<string, FrameStatePool.NodeProfileInfos.ProfileInfo> profileInfos)
         {
-            bool shouldRefresh = (_highlightBreakPoint != highlightBreakPoint);
+            bool shouldRefresh = _highlightBreakPoint != highlightBreakPoint;
 
             if (shouldRefresh && highlightBreakPoint != null)
             {
@@ -450,7 +408,7 @@ namespace Behaviac.Design
                     if (nvd != null && !nvd.CheckAllParentsExpanded())
                     {
                         nvd.SetAllParentsExpanded();
-                        this._pendingCenterBehavior = true;
+                        _pendingCenterBehavior = true;
                         layoutChanged = true;
                     }
                 }
@@ -473,7 +431,7 @@ namespace Behaviac.Design
 
             if (strA == null)
             {
-                return (strB == null);
+                return strB == null;
             }
 
             if (strB == null || strA.Count != strB.Count)
@@ -501,7 +459,7 @@ namespace Behaviac.Design
 
             if (dictA == null)
             {
-                return (dictB == null);
+                return dictB == null;
             }
 
             if (dictB == null || dictA.Count != dictB.Count)
@@ -523,28 +481,24 @@ namespace Behaviac.Design
         /// <summary>
         /// Stores the node you want to be selected when no layout currenty exists for the node.
         /// </summary>
-        private Node _selectedNodePending = null;
+        private Node _selectedNodePending;
+
         internal Node SelectedNodePending
         {
-            set
-            {
-                _selectedNodePending = value;
-            }
+            set { _selectedNodePending = value; }
         }
 
-        private Attachments.Attachment _selectedAttachmentPending = null;
+        private Attachments.Attachment _selectedAttachmentPending;
+
         internal Attachments.Attachment SelectedAttachmentPending
         {
-            set
-            {
-                _selectedAttachmentPending = value;
-            }
+            set { _selectedAttachmentPending = value; }
         }
 
         /// <summary>
         /// Stores the parent of the node you want to be selected when no layout currenty exists for the node.
         /// </summary>
-        private NodeViewData _selectedNodePendingParent = null;
+        private NodeViewData _selectedNodePendingParent;
 
         private enum FSMDragModes
         {
@@ -554,38 +508,38 @@ namespace Behaviac.Design
         }
 
         private FSMDragModes _fsmDragMode = FSMDragModes.kNone;
-        private NodeViewData.SubItem _fsmSubItem = null;
+        private NodeViewData.SubItem _fsmSubItem;
         private RectangleF _fsmItemBoundingBox = RectangleF.Empty;
 
         /// <summary>
         /// The node the mouse is currently hovering over.
         /// </summary>
-        private NodeViewData _currentNode = null;
+        private NodeViewData _currentNode;
 
-        private NodeViewData _currentExpandNode = null;
+        private NodeViewData _currentExpandNode;
         private string _nodeToolTip = "";
 
         /// <summary>
         /// The sub item attachment which the mouse is currently dragged.
         /// </summary>
-        private NodeViewData.SubItemAttachment _dragAttachment = null;
+        private NodeViewData.SubItemAttachment _dragAttachment;
 
-        private NodeViewData.SubItemAttachment _dragTargetAttachment = null;
+        private NodeViewData.SubItemAttachment _dragTargetAttachment;
 
         /// <summary>
         /// The defaults of the node which is dragged in from the node explorer. This is needed for the child mode data.
         /// </summary>
-        private DefaultObject _dragNodeDefaults = null;
+        private DefaultObject _dragNodeDefaults;
 
         /// <summary>
         /// The node another node is dragged over which should always be the same as _currentNode.
         /// </summary>
-        private NodeViewData _dragTargetNode = null;
+        private NodeViewData _dragTargetNode;
 
         /// <summary>
         /// The connector another node is dragged over.
         /// </summary>
-        private Node.Connector _dragTargetConnector = null;
+        private Node.Connector _dragTargetConnector;
 
         /// <summary>
         /// The way the dragged node is supposed to be attached to the _dragTargetNode.
@@ -599,17 +553,14 @@ namespace Behaviac.Design
         /// </summary>
         internal BehaviorTreeList BehaviorTreeList
         {
-            get
-            {
-                return _behaviorTreeList;
-            }
+            get { return _behaviorTreeList; }
 
             set
             {
                 _behaviorTreeList = value;
 
                 // update the status of the buttons
-                bool isDesignMode = (Plugin.EditMode == EditModes.Design);
+                bool isDesignMode = Plugin.EditMode == EditModes.Design;
                 saveButton.Enabled = isDesignMode & _behaviorTreeList.HasFileManagers();
                 saveAsButton.Enabled = isDesignMode & _behaviorTreeList.HasFileManagers();
                 exportButton.Enabled = isDesignMode & _behaviorTreeList.HasExporters();
@@ -621,17 +572,11 @@ namespace Behaviac.Design
         /// </summary>
         internal SizeF NodePadding
         {
-            get
-            {
-                return _nodeLayoutManager.Padding;
-            }
-            set
-            {
-                _nodeLayoutManager.Padding = value;
-            }
+            get { return _nodeLayoutManager.Padding; }
+            set { _nodeLayoutManager.Padding = value; }
         }
 
-        private bool _forceChangeLayout = false;
+        private bool _forceChangeLayout;
 
         /// <summary>
         /// Marks the current layout as obsolete and causes the view to redraw the graph.
@@ -651,7 +596,16 @@ namespace Behaviac.Design
         /// <summary>
         /// The way a dragged node is supposed to be attached to another node.
         /// </summary>
-        private enum NodeAttachMode { None, Left, Right, Top, Bottom, Attachment, Center };
+        private enum NodeAttachMode
+        {
+            None,
+            Left,
+            Right,
+            Top,
+            Bottom,
+            Attachment,
+            Center
+        }
 
         //return true if rootBehavior's agent type is derived from the agent type of childBehavior.
         private static bool IsCompatibleAgentType(Behavior rootBehavior, Behavior childBehavior)
@@ -754,7 +708,7 @@ namespace Behaviac.Design
 
                 if (nodetag.Type == NodeTagType.Prefab)
                 {
-                    behavior = (BehaviorNode)behavior.Clone();
+                    behavior = (BehaviorNode) behavior.Clone();
                 }
 
                 Behavior rootB = _rootNodeView.RootBehavior as Behavior;
@@ -763,7 +717,6 @@ namespace Behaviac.Design
                 if (rootB.AgentType == null)
                 {
                     rootB.AgentType = b.AgentType;
-
                 }
                 else if (!IsCompatibleAgentType(rootB, b))
                 {
@@ -774,9 +727,9 @@ namespace Behaviac.Design
                 if (nodetag.Type == NodeTagType.Behavior)
                 {
                     // create the referenced behaviour node for the behaviour
-                    ReferencedBehavior refnode = Node.CreateReferencedBehaviorNode(_rootNodeView.RootBehavior, behavior, mode == NodeAttachMode.None || ((Node)this.RootNode).IsFSM);
+                    ReferencedBehavior refnode = Node.CreateReferencedBehaviorNode(_rootNodeView.RootBehavior, behavior, mode == NodeAttachMode.None || ((Node) RootNode).IsFSM);
 
-                    newnode = (Node)refnode;
+                    newnode = refnode;
 
                     if (newnode != null)
                     {
@@ -821,11 +774,11 @@ namespace Behaviac.Design
                     rootB.LocalVars.AddRange(pars);
 
                     // The first child should be the root node of the prefab tree.
-                    Node behaviorNode = (Node)behavior;
+                    Node behaviorNode = (Node) behavior;
 
                     if (behaviorNode.Children.Count > 0)
                     {
-                        newnode = (Node)behaviorNode.Children[0];
+                        newnode = (Node) behaviorNode.Children[0];
 
                         string prefab = Path.GetFileNameWithoutExtension(behavior.Filename);
                         newnode.CommentText = string.Format("Prefab[{0}]", prefab);
@@ -835,7 +788,6 @@ namespace Behaviac.Design
                         newnode.SetPrefab(prefabName);
                     }
                 }
-
             }
             else
             {
@@ -856,7 +808,7 @@ namespace Behaviac.Design
             // update label
             newnode.OnPropertyValueChanged(false);
 
-            Node node = (nvd != null) ? nvd.Node : null;
+            Node node = nvd != null ? nvd.Node : null;
 
             if (node == null)
             {
@@ -868,11 +820,11 @@ namespace Behaviac.Design
             // attach the new node with the correct mode
             switch (mode)
             {
-                    // the new node is inserted in front of the target node
+                // the new node is inserted in front of the target node
                 case NodeAttachMode.Left:
                     if (node != null)
                     {
-                        Node parent = (Node)node.Parent;
+                        Node parent = (Node) node.Parent;
 
                         int k = node.ParentConnector.GetChildIndex(node);
 
@@ -893,14 +845,13 @@ namespace Behaviac.Design
 
                     break;
 
-                    // the new node is simply added to the target node's children
+                // the new node is simply added to the target node's children
                 case NodeAttachMode.Right:
                     if (newnode != null && newnode.IsFSM)
                     {
-                        startCondition = this.addFSMNode(newnode, mousePos);
+                        startCondition = addFSMNode(newnode, mousePos);
 
                         newnode.ScreenLocation = new PointF(_rootNodeView.BoundingBox.Left + _rootNodeView.BoundingBox.Width * 1.5f, _rootNodeView.BoundingBox.Top);
-
                     }
                     else if (node != null)
                     {
@@ -915,12 +866,12 @@ namespace Behaviac.Design
 
                     break;
 
-                    // the new node is placed above the target node
+                // the new node is placed above the target node
                 case NodeAttachMode.Top:
                     if (node != null)
                     {
                         int n = _dragTargetNode.Node.ParentConnector.GetChildIndex(node);
-                        ((Node)node.Parent).AddChild(_dragTargetNode.Node.ParentConnector, newnode, n);
+                        ((Node) node.Parent).AddChild(_dragTargetNode.Node.ParentConnector, newnode, n);
 
                         // automatically select the new node
                         _selectedNodePending = newnode;
@@ -929,12 +880,12 @@ namespace Behaviac.Design
 
                     break;
 
-                    // the new node is placed below the target node
+                // the new node is placed below the target node
                 case NodeAttachMode.Bottom:
                     if (node != null)
                     {
                         int m = _dragTargetNode.Node.ParentConnector.GetChildIndex(node);
-                        ((Node)node.Parent).AddChild(_dragTargetNode.Node.ParentConnector, newnode, m + 1);
+                        ((Node) node.Parent).AddChild(_dragTargetNode.Node.ParentConnector, newnode, m + 1);
 
                         // automatically select the new node
                         _selectedNodePending = newnode;
@@ -943,7 +894,7 @@ namespace Behaviac.Design
 
                     break;
 
-                    // the node will replace the target node
+                // the node will replace the target node
                 case NodeAttachMode.Center:
                     if (node != null && newnode != null && newnode.ReplaceNode(node))
                     {
@@ -951,7 +902,7 @@ namespace Behaviac.Design
                         _selectedNodePending = newnode;
                         _selectedNodePendingParent = nvd.Parent;
 
-                        this.Redraw();
+                        Redraw();
                     }
 
                     break;
@@ -959,11 +910,11 @@ namespace Behaviac.Design
                 case NodeAttachMode.None:
                     if (newnode != null && newnode.IsFSM)
                     {
-                        startCondition = this.addFSMNode(newnode, mousePos);
+                        startCondition = addFSMNode(newnode, mousePos);
 
                         // automatically select the new node
                         _selectedNodePending = newnode;
-                        _selectedNodePendingParent = this.RootNodeView;
+                        _selectedNodePendingParent = RootNodeView;
                     }
 
                     break;
@@ -977,7 +928,7 @@ namespace Behaviac.Design
                 // set the prefab dirty for the current parent
                 if (newnode.Parent != null)
                 {
-                    Node parent = (Node)newnode.Parent;
+                    Node parent = (Node) newnode.Parent;
 
                     if (!string.IsNullOrEmpty(parent.PrefabName))
                     {
@@ -996,7 +947,7 @@ namespace Behaviac.Design
                     startCondition.TargetFSMNodeId = newnode.Id;
                 }
 
-                UndoManager.Save(this.RootNode);
+                UndoManager.Save(RootNode);
             }
 
             // the layout needs to be recalculated
@@ -1026,7 +977,7 @@ namespace Behaviac.Design
                 // check if there is a Method node on the parent path
                 while (target != null)
                 {
-                    if (target is Nodes.Method)
+                    if (target is Method)
                     {
                         return target.CanAdopt(node);
                     }
@@ -1078,7 +1029,6 @@ namespace Behaviac.Design
                     }
 
                     SelectedNode = _selectedNodePendingParent.GetChild(_selectedNodePending);
-
                 }
                 else
                 {
@@ -1168,10 +1118,10 @@ namespace Behaviac.Design
                     float arrowHalfWidth = (bbox.Height - innerOffset - innerOffset) * 0.5f;
 
                     // calculate the mouse areas for the different attach modes
-                    RectangleF top    = new RectangleF(centerBoxX, bbox.Top, centerBoxWidth, offset);
+                    RectangleF top = new RectangleF(centerBoxX, bbox.Top, centerBoxWidth, offset);
                     RectangleF bottom = new RectangleF(centerBoxX, bbox.Bottom - offset, centerBoxWidth, offset);
                     RectangleF center = new RectangleF(centerBoxX, centerY - offset * 0.5f, centerBoxWidth, offset);
-                    RectangleF left   = new RectangleF(bbox.X, bbox.Y, offset, bbox.Height);
+                    RectangleF left = new RectangleF(bbox.X, bbox.Y, offset, bbox.Height);
 
                     // update for dragging in a new node
                     BehaviorNode behavior = _dragNodeDefaults as BehaviorNode;
@@ -1182,7 +1132,7 @@ namespace Behaviac.Design
                     }
 
                     // the node that is currently dragged
-                    Node draggedNode = (_movedNode != null) ? _movedNode : (_dragNodeDefaults as Node);
+                    Node draggedNode = _movedNode != null ? _movedNode : _dragNodeDefaults as Node;
 
                     if (draggedNode == null)
                     {
@@ -1193,9 +1143,9 @@ namespace Behaviac.Design
                     bool canBeAdoptedByParent = parentConnector != null && (!parentConnector.IsAsChild || AdoptNodeByAncestor(_dragTargetNode.Node.Parent, draggedNode));
                     //bool targetCanBeAdoptedByParent = (_movedNode == null) || (_movedNode.ParentConnector != null) && _movedNode.ParentConnector.AcceptsChild(_dragTargetNode.Node);
                     bool hasParentBehavior = _dragTargetNode.HasParentBehavior(behavior);
-                    bool parentHasParentBehavior = (_dragTargetNode.Parent == null);
+                    bool parentHasParentBehavior = _dragTargetNode.Parent == null;
 
-                    bool isFSM = _rootNodeView.IsFSM || (_rootNodeView.Children.Count == 0);
+                    bool isFSM = _rootNodeView.IsFSM || _rootNodeView.Children.Count == 0;
 
                     bool mayTop = !isFSM && canBeAdoptedByParent /*&& targetCanBeAdoptedByParent*/ && !parentHasParentBehavior &&
                                   parentConnector != null && parentConnector.AcceptsChild(draggedNode);
@@ -1207,7 +1157,7 @@ namespace Behaviac.Design
                                                                   parentConnector != null && !parentConnector.IsReadOnly && parentConnector.AcceptsChild(draggedNode, true) &&
                                                                   draggedNode.CanAdoptChildren(_dragTargetNode.Node));
 
-                    bool mayLeft = !isFSM && (_dragTargetNode.Node.Parent != _movedNode) &&
+                    bool mayLeft = !isFSM && _dragTargetNode.Node.Parent != _movedNode &&
                                    canBeAdoptedByParent && !parentHasParentBehavior && !hasParentBehavior &&
                                    parentConnector != null && !parentConnector.IsReadOnly && parentConnector.AcceptsChild(draggedNode, true) &&
                                    !(draggedNode is BehaviorNode) && draggedNode.CanAdoptNode(_dragTargetNode.Node);
@@ -1224,16 +1174,15 @@ namespace Behaviac.Design
                         if (_dragTargetNode.Node == _movedNode || dragTargetHasParentMovedNode)
                         {
                             //mayTop = KeyCtrlIsDown;
-                            mayTop &= KeyCtrlIsDown && (_dragTargetNode.Node.ParentConnector != null) && _dragTargetNode.Node.ParentConnector.AcceptsChild(_movedNode);
+                            mayTop &= KeyCtrlIsDown && _dragTargetNode.Node.ParentConnector != null && _dragTargetNode.Node.ParentConnector.AcceptsChild(_movedNode);
                             mayBottom = mayTop;
                             mayLeft = false;
-
                         }
                         else
                         {
                             // a dragged node cannot be placed in the same position again
-                            mayTop &= (KeyCtrlIsDown || _dragTargetNode.Node.PreviousNode != _movedNode);
-                            mayBottom &= (KeyCtrlIsDown || _dragTargetNode.Node.NextNode != _movedNode);
+                            mayTop &= KeyCtrlIsDown || _dragTargetNode.Node.PreviousNode != _movedNode;
+                            mayBottom &= KeyCtrlIsDown || _dragTargetNode.Node.NextNode != _movedNode;
                             mayLeft &= _movedNode.CanAdoptChildren(_dragTargetNode.Node) && (!KeyShiftIsDown || _movedNode.Children.Count == 0);
                         }
                     }
@@ -1242,9 +1191,8 @@ namespace Behaviac.Design
                     {
                         mayCenter = false;
                         mayLeft &= _copiedNode.CanAdoptChildren(_dragTargetNode.Node) && (!KeyShiftIsDown || _copiedNode.Children.Count == 0);
-                        mayTop &= (_dragTargetNode.Node.ParentConnector != null) && _dragTargetNode.Node.ParentConnector.AcceptsChild(_copiedNode);
+                        mayTop &= _dragTargetNode.Node.ParentConnector != null && _dragTargetNode.Node.ParentConnector.AcceptsChild(_copiedNode);
                         mayBottom = mayTop;
-
                     }
                     else if (_clipboardPasteMode)
                     {
@@ -1269,7 +1217,6 @@ namespace Behaviac.Design
                         {
                             _dragAttachMode = NodeAttachMode.Top;
                             e.Graphics.FillPolygon(Brushes.White, vertices);
-
                         }
                         else
                         {
@@ -1288,7 +1235,6 @@ namespace Behaviac.Design
                         {
                             _dragAttachMode = NodeAttachMode.Bottom;
                             e.Graphics.FillPolygon(Brushes.White, vertices);
-
                         }
                         else
                         {
@@ -1303,7 +1249,6 @@ namespace Behaviac.Design
                         {
                             _dragAttachMode = NodeAttachMode.Center;
                             e.Graphics.FillRectangle(Brushes.White, centerX - arrowHalfWidth * 0.5f, centerY - innerOffset * 2.0f, arrowHalfWidth, innerOffset * 4.0f);
-
                         }
                         else
                         {
@@ -1322,7 +1267,6 @@ namespace Behaviac.Design
                         {
                             _dragAttachMode = NodeAttachMode.Left;
                             e.Graphics.FillPolygon(Brushes.White, vertices);
-
                         }
                         else
                         {
@@ -1360,7 +1304,6 @@ namespace Behaviac.Design
                                 _dragTargetConnector = _dragTargetNode.Node.GetConnector(connector.Identifier);
                                 _dragAttachMode = NodeAttachMode.Right;
                                 e.Graphics.FillPolygon(Brushes.White, vertices);
-
                             }
                             else
                             {
@@ -1382,7 +1325,7 @@ namespace Behaviac.Design
 
                 // offset the graph to the mouse position
                 _movedNodeGraph.Offset = new PointF(_nodeLayoutManager.Offset.X + graphMousePos.X * _nodeLayoutManager.Scale,
-                                                    _nodeLayoutManager.Offset.Y + graphMousePos.Y * _nodeLayoutManager.Scale - _movedNodeGraph.RootNodeLayout.LayoutRectangle.Height * 0.5f * _movedNodeGraph.Scale);
+                    _nodeLayoutManager.Offset.Y + graphMousePos.Y * _nodeLayoutManager.Scale - _movedNodeGraph.RootNodeLayout.LayoutRectangle.Height * 0.5f * _movedNodeGraph.Scale);
 
                 // draw the graph
                 _movedNodeGraph.DrawGraph(e.Graphics, graphMousePos);
@@ -1437,7 +1380,6 @@ namespace Behaviac.Design
                                     {
                                         _dragAttachMode = NodeAttachMode.Top;
                                         e.Graphics.FillPolygon(Brushes.White, vertices);
-
                                     }
                                     else
                                     {
@@ -1458,7 +1400,6 @@ namespace Behaviac.Design
                                     {
                                         _dragAttachMode = NodeAttachMode.Bottom;
                                         e.Graphics.FillPolygon(Brushes.White, vertices);
-
                                     }
                                     else
                                     {
@@ -1488,20 +1429,20 @@ namespace Behaviac.Design
             DrawFSMDragCurve(e, graphMousePos);
 
             //the first time of paint, to collapse plan failed branch by default
-            Behavior b = this.RootNode as Behavior;
+            Behavior b = RootNode as Behavior;
 
             if (b.PlanIsCollapseFailedBranch > 0)
             {
                 if (b.PlanIsCollapseFailedBranch == Behavior.kPlanIsCollapseFailedBranch)
                 {
-                    NodeViewData root = (NodeViewData)this.RootNodeView.Children[0];
+                    NodeViewData root = (NodeViewData) RootNodeView.Children[0];
                     CollapseFailedBrach(root);
                 }
 
                 b.PlanIsCollapseFailedBranch--;
 
-                this.CenterNode(this._rootNodeView);
-                this.LayoutChanged();
+                CenterNode(_rootNodeView);
+                LayoutChanged();
             }
         }
 
@@ -1525,7 +1466,6 @@ namespace Behaviac.Design
                         vertices[0] = new PointF(bbox.Left + offset, centerY - offset * 0.6f);
                         vertices[1] = new PointF(bbox.Left, centerY);
                         vertices[2] = new PointF(bbox.Left + offset, centerY + offset * 0.6f);
-
                     }
                     else
                     {
@@ -1552,7 +1492,7 @@ namespace Behaviac.Design
             if (_fsmDragMode != FSMDragModes.kNone)
             {
                 RectangleF bbox = _fsmItemBoundingBox;
-                Pen pen = new Pen(System.Drawing.Brushes.LightGray, 3.0f);
+                Pen pen = new Pen(Brushes.LightGray, 3.0f);
                 pen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
                 pen.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
                 pen.CustomEndCap = new System.Drawing.Drawing2D.AdjustableArrowCap(pen.Width, pen.Width);
@@ -1569,10 +1509,10 @@ namespace Behaviac.Design
                 float middleX = startPos.X + (graphMousePos.X - startPos.X) * 0.5f;
 
                 e.Graphics.DrawBezier(pen,
-                                      startPos.X, startPos.Y,
-                                      middleX, startPos.Y,
-                                      middleX, graphMousePos.Y,
-                                      graphMousePos.X, graphMousePos.Y);
+                    startPos.X, startPos.Y,
+                    middleX, startPos.Y,
+                    middleX, graphMousePos.Y,
+                    graphMousePos.X, graphMousePos.Y);
             }
         }
 
@@ -1592,7 +1532,6 @@ namespace Behaviac.Design
                         nv.IsExpanded = false;
                         return;
                     }
-
                 }
                 else
                 {
@@ -1612,36 +1551,36 @@ namespace Behaviac.Design
             }
         }
 
-        private static Node _clipboardNode = null;
-        private static NodeViewData.SubItem _clipboardSubItem = null;
-        private static NodeViewData _clipboardRootNode = null;
+        private static Node _clipboardNode;
+        private static NodeViewData.SubItem _clipboardSubItem;
+        private static NodeViewData _clipboardRootNode;
 
         /// <summary>
         /// Stores if Ctrl+V is currently pressed.
         /// </summary>
-        private bool _clipboardPasteMode = false;
+        private bool _clipboardPasteMode;
 
         /// <summary>
         /// The node we dragged inside the graph.
         /// </summary>
-        private Node _movedNode = null;
+        private Node _movedNode;
 
         /// <summary>
         /// The node we want to create a copy from.
         /// </summary>
-        private Node _copiedNode = null;
+        private Node _copiedNode;
 
         /// <summary>
         /// The layout manager which draws the small graph when dragging existing nodes.
         /// </summary>
-        private NodeLayoutManager _movedNodeGraph = null;
+        private NodeLayoutManager _movedNodeGraph;
 
-        private NodeViewData.SubItem _movedSubItem = null;
+        private NodeViewData.SubItem _movedSubItem;
 
         private void BehaviorTreeView_MouseLeave(object sender, EventArgs e)
         {
-            this.toolTipTimer.Stop();
-            this.toolTip.Hide(this);
+            toolTipTimer.Stop();
+            toolTip.Hide(this);
         }
 
         /// <summary>
@@ -1668,11 +1607,10 @@ namespace Behaviac.Design
             if (nodeFound != null)
             {
                 subItemFound = nodeFound.GetSubItem(nodeFound, _nodeLayoutManager.ViewToGraph(e.Location));
-
             }
             else
             {
-                this.toolTip.Hide(this);
+                toolTip.Hide(this);
             }
 
             // clear previously stored node which can cause problems when dragging to another view
@@ -1689,12 +1627,12 @@ namespace Behaviac.Design
                 {
                     if (nodeFound != null)
                     {
-                        _nodeToolTip = (subItemFound != null) ? subItemFound.ToolTip : nodeFound.ToolTip;
+                        _nodeToolTip = subItemFound != null ? subItemFound.ToolTip : nodeFound.ToolTip;
                     }
 
                     if (!string.IsNullOrEmpty(_nodeToolTip))
                     {
-                        this.toolTipTimer.Start();
+                        toolTipTimer.Start();
                     }
                 }
 
@@ -1702,7 +1640,7 @@ namespace Behaviac.Design
             }
 
             // check if we are currently dragging the graph
-            if ((e.Button == MouseButtons.Middle || (e.Button == MouseButtons.Left && _objectDragType == ObjectDragTypes.kGraph)) && _lastMousePosition != e.Location && !this.contextMenu.Visible)
+            if ((e.Button == MouseButtons.Middle || e.Button == MouseButtons.Left && _objectDragType == ObjectDragTypes.kGraph) && _lastMousePosition != e.Location && !contextMenu.Visible)
             {
                 Cursor = Cursors.SizeAll;
 
@@ -1715,7 +1653,7 @@ namespace Behaviac.Design
             // check if we start duplicating an existing node step 1
             else if (e.Button == MouseButtons.Left && KeyCtrlIsDown && _lastMousePosition != e.Location && _dragNodeDefaults == null && _copiedNode == null && _currentNode != null && !(_currentNode.Node is BehaviorNode))
             {
-                if (_objectDragType == ObjectDragTypes.kNode)   // node
+                if (_objectDragType == ObjectDragTypes.kNode) // node
                 {
                     _movedNode = null;
                     _copiedNode = _currentNode.Node;
@@ -1727,9 +1665,8 @@ namespace Behaviac.Design
 
                     // use the existing node as the node defaults
                     _dragNodeDefaults = _copiedNode;
-
                 }
-                else if (_objectDragType == ObjectDragTypes.kAttachment)     // attachment
+                else if (_objectDragType == ObjectDragTypes.kAttachment) // attachment
                 {
                     if (_dragAttachment == null)
                     {
@@ -1744,7 +1681,7 @@ namespace Behaviac.Design
             // check if we are duplicating an existing node step 2
             else if (e.Button == MouseButtons.Left && KeyCtrlIsDown && (_copiedNode != null || _dragAttachment != null))
             {
-                if (_objectDragType == ObjectDragTypes.kNode)   // node
+                if (_objectDragType == ObjectDragTypes.kNode) // node
                 {
                     _movedNodeGraph.RenderDepth = KeyShiftIsDown ? int.MaxValue : 0;
 
@@ -1754,9 +1691,8 @@ namespace Behaviac.Design
 
                     //Point movedGraphGraphPos= new Point(e.Location.X + _movedNodeGraph.Offset.X, e.Location.Y + _movedNodeGraph.Offset.Y /-2);
                     //_movedNodeGraph.Location= movedGraphGraphPos;
-
                 }
-                else if (_objectDragType == ObjectDragTypes.kAttachment)     // attachment
+                else if (_objectDragType == ObjectDragTypes.kAttachment) // attachment
                 {
                     _dragTargetNode = nodeFound;
 
@@ -1773,7 +1709,7 @@ namespace Behaviac.Design
             // check if we start dragging an existing node step 1
             else if (e.Button == MouseButtons.Left && _lastMousePosition != e.Location && !KeyCtrlIsDown && _movedNode == null && _currentNode != null)
             {
-                if (_objectDragType == ObjectDragTypes.kNode)   // node
+                if (_objectDragType == ObjectDragTypes.kNode) // node
                 {
                     if (_currentNode.CanBeDragged())
                     {
@@ -1783,12 +1719,11 @@ namespace Behaviac.Design
                             PointF lastGraphMousePos = _nodeLayoutManager.ViewToGraph(_lastMousePosition);
 
                             _currentNode.ScreenLocation = new PointF(_currentNode.ScreenLocation.X + currentGraphMousePos.X - lastGraphMousePos.X,
-                                                                     _currentNode.ScreenLocation.Y + currentGraphMousePos.Y - lastGraphMousePos.Y);
+                                _currentNode.ScreenLocation.Y + currentGraphMousePos.Y - lastGraphMousePos.Y);
 
                             LayoutChanged();
-
                         }
-                        else if ((KeyShiftIsDown || _currentNode.Node.ParentCanAdoptChildren))
+                        else if (KeyShiftIsDown || _currentNode.Node.ParentCanAdoptChildren)
                         {
                             _movedNode = _currentNode.Node;
 
@@ -1803,9 +1738,8 @@ namespace Behaviac.Design
                             _movedNodeGraph.RenderDepth = int.MaxValue;
                         }
                     }
-
                 }
-                else if (_objectDragType == ObjectDragTypes.kAttachment)     // attachment
+                else if (_objectDragType == ObjectDragTypes.kAttachment) // attachment
                 {
                     if (_fsmDragMode == FSMDragModes.kNone && Plugin.EditMode == EditModes.Design)
                     {
@@ -1821,7 +1755,6 @@ namespace Behaviac.Design
                             {
                                 _movedSubItem = _dragAttachment.Clone(_currentNode.Node);
                             }
-
                         }
                         else if (_dragTargetNode != null)
                         {
@@ -1852,7 +1785,6 @@ namespace Behaviac.Design
                 Cursor = _currentNode == null ? Cursors.No : Cursors.Default;
 
                 Invalidate();
-
             }
             else if (_clipboardPasteMode)
             {
@@ -1867,7 +1799,6 @@ namespace Behaviac.Design
                 Cursor = _currentNode == null ? Cursors.No : Cursors.Default;
 
                 Invalidate();
-
             }
             else if (_currentNode != null && _dragAttachment == null)
             {
@@ -1881,7 +1812,6 @@ namespace Behaviac.Design
                     _currentExpandNode = _currentNode;
                     _nodeToolTip = isInExandRange ? Resources.ExpandAllInfo : Resources.ExpandConnectorInfo;
                     Invalidate();
-
                 }
                 else if (_currentExpandNode != null)
                 {
@@ -1938,10 +1868,7 @@ namespace Behaviac.Design
         /// </summary>
         private bool KeyCtrlIsDown
         {
-            get
-            {
-                return (Control.ModifierKeys & Keys.Control) != Keys.None;
-            }
+            get { return (ModifierKeys & Keys.Control) != Keys.None; }
         }
 
         /// <summary>
@@ -1949,10 +1876,7 @@ namespace Behaviac.Design
         /// </summary>
         private bool KeyShiftIsDown
         {
-            get
-            {
-                return (Control.ModifierKeys & Keys.Shift) != Keys.None;
-            }
+            get { return (ModifierKeys & Keys.Shift) != Keys.None; }
         }
 
         /// <summary>
@@ -1960,10 +1884,7 @@ namespace Behaviac.Design
         /// </summary>
         private bool KeyAltIsDown
         {
-            get
-            {
-                return (Control.ModifierKeys & Keys.Alt) != Keys.None;
-            }
+            get { return (ModifierKeys & Keys.Alt) != Keys.None; }
         }
 
         private bool MoveSubItem(NodeViewData sourceNvd, NodeViewData targetNvd, NodeViewData.SubItemAttachment sourceAttachment, NodeViewData.SubItemAttachment targetAttachment, bool insertPreviously, bool isCopied)
@@ -1990,7 +1911,7 @@ namespace Behaviac.Design
                     ClickEvent(SelectedNode);
                 }
 
-                UndoManager.Save(this.RootNode);
+                UndoManager.Save(RootNode);
 
                 LayoutChanged();
 
@@ -2008,14 +1929,14 @@ namespace Behaviac.Design
             _movedSubItem = null;
 
             // check if we were dragging a transition for the FSM.
-            if (e.Button == MouseButtons.Left && _currentNode != null && ((_objectDragType == ObjectDragTypes.kNode) && _currentNode.IsFSM || _fsmSubItem != null && _fsmDragMode != FSMDragModes.kNone))
+            if (e.Button == MouseButtons.Left && _currentNode != null && (_objectDragType == ObjectDragTypes.kNode && _currentNode.IsFSM || _fsmSubItem != null && _fsmDragMode != FSMDragModes.kNone))
             {
                 if (Plugin.EditMode == EditModes.Design && _startMousePosition != e.Location)
                 {
                     // drag and move the fsm node
-                    if ((_objectDragType == ObjectDragTypes.kNode) && _currentNode.IsFSM)
+                    if (_objectDragType == ObjectDragTypes.kNode && _currentNode.IsFSM)
                     {
-                        UndoManager.Save(this.RootNode);
+                        UndoManager.Save(RootNode);
 
                         LayoutChanged();
                     }
@@ -2025,7 +1946,7 @@ namespace Behaviac.Design
                     {
                         NodeViewData targetNvd = _rootNodeView.GetInsideNode(e.Location);
 
-                        if (targetNvd != null && targetNvd.IsFSM && (targetNvd.Parent != null) && _fsmSubItem is NodeViewData.SubItemAttachment)
+                        if (targetNvd != null && targetNvd.IsFSM && targetNvd.Parent != null && _fsmSubItem is NodeViewData.SubItemAttachment)
                         {
                             NodeViewData.SubItemAttachment subItemAttachment = _fsmSubItem as NodeViewData.SubItemAttachment;
 
@@ -2033,7 +1954,7 @@ namespace Behaviac.Design
                             {
                                 subItemAttachment.Attachment.TargetFSMNodeId = targetNvd.Node.Id;
 
-                                UndoManager.Save(this.RootNode);
+                                UndoManager.Save(RootNode);
 
                                 LayoutChanged();
                             }
@@ -2052,7 +1973,7 @@ namespace Behaviac.Design
                     NodeViewData.SubItemAttachment targetAttachment = targetSubItem as NodeViewData.SubItemAttachment;
 
                     if ((_currentNode != _dragTargetNode || targetAttachment != null) &&
-                        this.MoveSubItem(_currentNode, _dragTargetNode, _dragAttachment, targetAttachment, _dragAttachMode == NodeAttachMode.Top, KeyCtrlIsDown))
+                        MoveSubItem(_currentNode, _dragTargetNode, _dragAttachment, targetAttachment, _dragAttachMode == NodeAttachMode.Top, KeyCtrlIsDown))
                     {
                         _currentNode.ClickEvent(_currentNode, _nodeLayoutManager.ViewToGraph(e.Location));
 
@@ -2076,14 +1997,12 @@ namespace Behaviac.Design
                     if (_copiedNode != null)
                     {
                         bool cloneBranch = !(_copiedNode is ReferencedBehavior);
-                        sourceNode = (KeyShiftIsDown && cloneBranch) ? (Nodes.Node)_copiedNode.CloneBranch() : (Nodes.Node)_copiedNode.Clone();
-
+                        sourceNode = KeyShiftIsDown && cloneBranch ? _copiedNode.CloneBranch() : (Node) _copiedNode.Clone();
                     }
                     else if (_clipboardPasteMode)
                     {
                         bool cloneBranch = !(_clipboardNode is ReferencedBehavior);
-                        sourceNode = (/*KeyShiftIsDown && */cloneBranch) ? (Nodes.Node)_clipboardNode.CloneBranch() : (Nodes.Node)_clipboardNode.Clone();
-
+                        sourceNode = cloneBranch ? _clipboardNode.CloneBranch() : (Node) _clipboardNode.Clone();
                     }
                     else if (_movedNode != null)
                     {
@@ -2091,7 +2010,7 @@ namespace Behaviac.Design
                     }
 
                     Debug.Check(sourceNode != null);
-                    Node sourceParent = (Node)sourceNode.Parent;
+                    Node sourceParent = (Node) sourceNode.Parent;
                     BehaviorNode sourceBehavior = sourceNode.Behavior;
 
                     if (_dragTargetNode.Node == sourceNode)
@@ -2117,7 +2036,6 @@ namespace Behaviac.Design
                             {
                                 sourceParent.RemoveChild(sourceNode.ParentConnector, sourceNode);
                             }
-
                         }
                         else
                         {
@@ -2128,10 +2046,10 @@ namespace Behaviac.Design
                     // move the dragged node to the target node, according to the attach mode
                     switch (_dragAttachMode)
                     {
-                            // the node will be placed above the target node
-                        case (NodeAttachMode.Top):
+                        // the node will be placed above the target node
+                        case NodeAttachMode.Top:
                             int n = _dragTargetNode.Node.ParentConnector.GetChildIndex(_dragTargetNode.Node);
-                            ((Node)_dragTargetNode.Node.Parent).AddChild(_dragTargetNode.Node.ParentConnector, sourceNode, n);
+                            ((Node) _dragTargetNode.Node.Parent).AddChild(_dragTargetNode.Node.ParentConnector, sourceNode, n);
 
                             _selectedNodePending = sourceNode;
                             _selectedNodePendingParent = _dragTargetNode.Parent;
@@ -2139,10 +2057,10 @@ namespace Behaviac.Design
                             LayoutChanged();
                             break;
 
-                            // the node will be placed below the target node
-                        case (NodeAttachMode.Bottom):
+                        // the node will be placed below the target node
+                        case NodeAttachMode.Bottom:
                             int m = _dragTargetNode.Node.ParentConnector.GetChildIndex(_dragTargetNode.Node);
-                            ((Node)_dragTargetNode.Node.Parent).AddChild(_dragTargetNode.Node.ParentConnector, sourceNode, m + 1);
+                            ((Node) _dragTargetNode.Node.Parent).AddChild(_dragTargetNode.Node.ParentConnector, sourceNode, m + 1);
 
                             _selectedNodePending = sourceNode;
                             _selectedNodePendingParent = _dragTargetNode.Parent;
@@ -2150,9 +2068,9 @@ namespace Behaviac.Design
                             LayoutChanged();
                             break;
 
-                            // the node will be placed in front of the target node
-                        case (NodeAttachMode.Left):
-                            Node parent = (Node)_dragTargetNode.Node.Parent;
+                        // the node will be placed in front of the target node
+                        case NodeAttachMode.Left:
+                            Node parent = (Node) _dragTargetNode.Node.Parent;
                             Node.Connector conn = _dragTargetNode.Node.ParentConnector;
 
                             int o = conn.GetChildIndex(_dragTargetNode.Node);
@@ -2171,8 +2089,8 @@ namespace Behaviac.Design
                             LayoutChanged();
                             break;
 
-                            // the node will simply attached to the target node
-                        case (NodeAttachMode.Right):
+                        // the node will simply attached to the target node
+                        case NodeAttachMode.Right:
                             _dragTargetNode.Node.AddChild(_dragTargetConnector, sourceNode);
 
                             _selectedNodePending = sourceNode;
@@ -2181,8 +2099,8 @@ namespace Behaviac.Design
                             LayoutChanged();
                             break;
 
-                            // the node will replace the target node
-                        case (NodeAttachMode.Center):
+                        // the node will replace the target node
+                        case NodeAttachMode.Center:
                             if (sourceNode != null && sourceNode.ReplaceNode(_dragTargetNode.Node))
                             {
                                 LayoutChanged();
@@ -2197,14 +2115,14 @@ namespace Behaviac.Design
                         if (_copiedNode != null || _clipboardPasteMode)
                         {
                             // Cross two different behavior files
-                            if (_clipboardPasteMode && _clipboardRootNode != this.RootNodeView)
+                            if (_clipboardPasteMode && _clipboardRootNode != RootNodeView)
                             {
                                 try
                                 {
                                     // Copy the used Pars from the current behavior to the new one.
                                     if (_clipboardNode != null && _clipboardRootNode != null && _clipboardRootNode.Node is Behavior)
                                     {
-                                        foreach (ParInfo par in((Behavior)(_clipboardRootNode.Node)).LocalVars)
+                                        foreach (ParInfo par in ((Behavior) _clipboardRootNode.Node).LocalVars)
                                         {
                                             List<Node.ErrorCheck> result = new List<Node.ErrorCheck>();
                                             Plugin.CheckPar(_clipboardNode, par, ref result);
@@ -2213,7 +2131,7 @@ namespace Behaviac.Design
                                             {
                                                 bool bExist = false;
 
-                                                foreach (ParInfo p in((Behavior)this.RootNode).LocalVars)
+                                                foreach (ParInfo p in ((Behavior) RootNode).LocalVars)
                                                 {
                                                     if (p.Name == par.Name)
                                                     {
@@ -2224,14 +2142,14 @@ namespace Behaviac.Design
 
                                                 if (!bExist)
                                                 {
-                                                    ((Behavior)this.RootNode).LocalVars.Add(par);
+                                                    ((Behavior) RootNode).LocalVars.Add(par);
                                                 }
                                             }
                                         }
                                     }
 
                                     // reset its properties and methods
-                                    sourceNode.ResetMembers(MetaOperations.ChangeAgentType, this.RootNode.AgentType, null, null, null);
+                                    sourceNode.ResetMembers(MetaOperations.ChangeAgentType, RootNode.AgentType, null, null, null);
                                 }
                                 catch
                                 {
@@ -2248,7 +2166,7 @@ namespace Behaviac.Design
                         // set the prefab dirty for its current parent
                         if (sourceNode.Parent != null)
                         {
-                            Node parent = (Node)sourceNode.Parent;
+                            Node parent = (Node) sourceNode.Parent;
 
                             if (!string.IsNullOrEmpty(parent.PrefabName))
                             {
@@ -2257,7 +2175,7 @@ namespace Behaviac.Design
                             }
                         }
 
-                        UndoManager.Save(this.RootNode);
+                        UndoManager.Save(RootNode);
                     }
                 }
 
@@ -2278,24 +2196,24 @@ namespace Behaviac.Design
             // popup the menu for the current hit node
             else if (e.Button == MouseButtons.Right && !KeyAltIsDown && !KeyCtrlIsDown && !KeyShiftIsDown)
             {
-                bool itemEnabled = (SelectedNode != null && SelectedNode.Node.Parent != null);
-                itemEnabled &= (Plugin.EditMode == EditModes.Design);
+                bool itemEnabled = SelectedNode != null && SelectedNode.Node.Parent != null;
+                itemEnabled &= Plugin.EditMode == EditModes.Design;
 
                 deleteMenuItem.ShortcutKeys = Keys.Delete;
                 deleteTreeMenuItem.ShortcutKeys = Keys.Shift | Keys.Delete;
 
                 cutMenuItem.Enabled = SelectedNodeCanBeCut();
-                cutTreeMenuItem.Enabled = (SelectedNode != null) && !SelectedNode.IsFSM && SelectedTreeCanBeCut();
+                cutTreeMenuItem.Enabled = SelectedNode != null && !SelectedNode.IsFSM && SelectedTreeCanBeCut();
                 copyMenuItem.Enabled = itemEnabled;
-                copySubtreeMenuItem.Enabled = (SelectedNode != null) && !SelectedNode.IsFSM;
+                copySubtreeMenuItem.Enabled = SelectedNode != null && !SelectedNode.IsFSM;
                 pasteMenuItem.Enabled = SelectedNodeCanBePasted();
                 deleteMenuItem.Enabled = SelectedNodeCanBeDeleted();
-                deleteTreeMenuItem.Enabled = (SelectedNode != null) && !SelectedNode.IsFSM && SelectedTreeCanBeDeleted();
+                deleteTreeMenuItem.Enabled = SelectedNode != null && !SelectedNode.IsFSM && SelectedTreeCanBeDeleted();
 
                 bool isReferencedBehavior = SelectedNode != null && SelectedNode.Node is ReferencedBehavior;
                 bool isEvent = SelectedNode != null && SelectedNode.SelectedSubItem != null && SelectedNode.SelectedSubItem.SelectableObject is Attachments.Event;
                 referenceMenuItem.Enabled = itemEnabled || isReferencedBehavior || isEvent;
-                referenceMenuItem.Text = (isReferencedBehavior || isEvent) ? Resources.OpenReference : Resources.SaveReference;
+                referenceMenuItem.Text = isReferencedBehavior || isEvent ? Resources.OpenReference : Resources.SaveReference;
 
                 disableMenuItem.Enabled = false;
 
@@ -2314,7 +2232,7 @@ namespace Behaviac.Design
                     }
                 }
 
-                expandMenuItem.Enabled = (SelectedNode != null && SelectedNode.CanBeExpanded());
+                expandMenuItem.Enabled = SelectedNode != null && SelectedNode.CanBeExpanded();
                 collapseMenuItem.Enabled = expandMenuItem.Enabled;
                 expandAllMenuItem.Enabled = expandMenuItem.Enabled;
                 collapseAllMenuItem.Enabled = expandMenuItem.Enabled;
@@ -2334,7 +2252,7 @@ namespace Behaviac.Design
                 if (SelectedNode != null)
                 {
                     Node prefabRoot = SelectedNode.Node.GetPrefabRoot();
-                    string relativeFilename = FileManagers.FileManager.GetRelativePath(this.RootNode.Filename);
+                    string relativeFilename = FileManagers.FileManager.GetRelativePath(RootNode.Filename);
                     applyMenuItem.Enabled = itemEnabled && isPrefabInstance && SelectedNode.Node.PrefabName != relativeFilename && prefabRoot.IsPrefabDataDirty();
                 }
 
@@ -2345,11 +2263,11 @@ namespace Behaviac.Design
                     enterBreakpointMenuItem.Text = SelectedNode.GetBreakpointOperation(HighlightBreakPoint.kEnter);
                     exitBreakpointMenuItem.Text = SelectedNode.GetBreakpointOperation(HighlightBreakPoint.kExit);
 
-                    this.beakpointPlanning.Visible = false;
+                    beakpointPlanning.Visible = false;
 
                     if (SelectedNode.Node is Task)
                     {
-                        this.beakpointPlanning.Visible = true;
+                        beakpointPlanning.Visible = true;
                         beakpointPlanning.Text = SelectedNode.GetBreakpointOperation(HighlightBreakPoint.kPlanning);
                     }
                 }
@@ -2369,10 +2287,7 @@ namespace Behaviac.Design
         public bool SelectedNodeCanBePasted()
         {
             return _clipboardNode != null && _clipboardNode.IsFSM ||
-                   SelectedNode != null &&
-                   (_clipboardSubItem != null &&
-                    _clipboardSubItem.SelectableObject != null &&
-                    SelectedNode.Node.AcceptsAttachment(_clipboardSubItem.SelectableObject));
+                   SelectedNode != null && _clipboardSubItem != null && _clipboardSubItem.SelectableObject != null && SelectedNode.Node.AcceptsAttachment(_clipboardSubItem.SelectableObject);
         }
 
         public bool SelectedNodeCanBeCut()
@@ -2464,7 +2379,6 @@ namespace Behaviac.Design
                         _objectDragType = ObjectDragTypes.kNode;
                     }
                 }
-
             }
             else
             {
@@ -2550,7 +2464,7 @@ namespace Behaviac.Design
         private void mouseClicked(MouseEventArgs e)
         {
             // check if the user did not drag the graph and clicked it instead
-            if ((e.Button == MouseButtons.Left || e.Button == MouseButtons.Right) && (_startMousePosition == e.Location))
+            if ((e.Button == MouseButtons.Left || e.Button == MouseButtons.Right) && _startMousePosition == e.Location)
             {
                 PointF graphMousePos = _nodeLayoutManager.ViewToGraph(e.Location);
 
@@ -2583,7 +2497,6 @@ namespace Behaviac.Design
                     // perform click event on the node as the node's have to handle their events.
                     SelectedNode.ClickEvent(SelectedNode, _nodeLayoutManager.ViewToGraph(e.Location));
                     Invalidate();
-
                 }
                 else
                 {
@@ -2591,11 +2504,11 @@ namespace Behaviac.Design
                     if (pen != null)
                     {
                         pen.Width = pen.Width * 4;
-                        NodeViewData.SubItemAttachment attach = this.RootNodeView.GetSubItemByDrawnPath(graphMousePos, pen);
+                        NodeViewData.SubItemAttachment attach = RootNodeView.GetSubItemByDrawnPath(graphMousePos, pen);
 
                         if (attach != null)
                         {
-                            NodeViewData nvd = this.RootNodeView.FindNodeViewData(attach.Attachment.Node);
+                            NodeViewData nvd = RootNodeView.FindNodeViewData(attach.Attachment.Node);
 
                             if (nvd != null)
                             {
@@ -2623,7 +2536,6 @@ namespace Behaviac.Design
                 if (ClickNode != null)
                 {
                     ClickNode(SelectedNode);
-                    return;
                 }
             }
         }
@@ -2660,7 +2572,7 @@ namespace Behaviac.Design
                 }
             }
 
-            PropertiesDock.InspectObject(this.RootNode, selectedNode);
+            PropertiesDock.InspectObject(RootNode, selectedNode);
         }
 
         /// <summary>
@@ -2684,7 +2596,6 @@ namespace Behaviac.Design
                         KeepNodePosition(_currentNode);
 
                         LayoutChanged();
-
                     }
                     else
                     {
@@ -2704,7 +2615,7 @@ namespace Behaviac.Design
         {
             if (SelectedNode != null)
             {
-                if (SelectedNode.SelectedSubItem == null)   // Node -> Attachment
+                if (SelectedNode.SelectedSubItem == null) // Node -> Attachment
                 {
                     SelectedNode.SelectFirstSubItem();
 
@@ -2717,9 +2628,8 @@ namespace Behaviac.Design
                     {
                         return false;
                     }
-
                 }
-                else     // Attachment -> Node
+                else // Attachment -> Node
                 {
                     SelectedNode.SelectedSubItem = null;
 
@@ -2739,7 +2649,7 @@ namespace Behaviac.Design
         {
             if (SelectedNode != null)
             {
-                Node node = SelectedNode.Node as Node;
+                Node node = SelectedNode.Node;
                 if (node != null)
                 {
                     Node parent = node.Parent as Node;
@@ -2756,7 +2666,6 @@ namespace Behaviac.Design
 
                             parent.RemoveChild(connector, node);
                             parent.AddChild(connector, node, n - 1);
-
                         }
                         else
                         {
@@ -2775,7 +2684,7 @@ namespace Behaviac.Design
                             node.HasOwnPrefabData = true;
                         }
 
-                        UndoManager.Save(this.RootNode);
+                        UndoManager.Save(RootNode);
                     }
                 }
             }
@@ -2788,7 +2697,7 @@ namespace Behaviac.Design
         {
             switch (e.KeyCode)
             {
-                case (Keys.Enter):
+                case Keys.Enter:
                     if (SelectedNode != null)
                     {
                         if (KeyCtrlIsDown)
@@ -2808,8 +2717,8 @@ namespace Behaviac.Design
 
                     break;
 
-                    // store when the shift key is released
-                case (Keys.ShiftKey):
+                // store when the shift key is released
+                case Keys.ShiftKey:
 
                     // update the drawn graph for dragging and duplicating
                     if (_movedNodeGraph != null)
@@ -2820,8 +2729,8 @@ namespace Behaviac.Design
 
                     break;
 
-                    // paste from clipboard
-                case (Keys.V):
+                // paste from clipboard
+                case Keys.V:
                     PasteSelectedNode();
 
                     _clipboardPasteMode = false;
@@ -2837,10 +2746,10 @@ namespace Behaviac.Design
                     Invalidate();
                     break;
 
-                case (Keys.Left):
-                case (Keys.Right):
-                case (Keys.Up):
-                case (Keys.Down):
+                case Keys.Left:
+                case Keys.Right:
+                case Keys.Up:
+                case Keys.Down:
                     if (e.Control)
                     {
                         break;
@@ -2848,7 +2757,7 @@ namespace Behaviac.Design
 
                     if (SelectedNode == null)
                     {
-                        SelectedNode = this.RootNodeView;
+                        SelectedNode = RootNodeView;
 
                         if (ClickNode != null)
                         {
@@ -2861,7 +2770,7 @@ namespace Behaviac.Design
 
                     switch (e.KeyCode)
                     {
-                        case (Keys.Left):
+                        case Keys.Left:
                             if (SelectedNode != null && SelectedNode.Parent != null)
                             {
                                 SelectedNode = SelectedNode.Parent;
@@ -2876,7 +2785,7 @@ namespace Behaviac.Design
 
                             break;
 
-                        case (Keys.Right):
+                        case Keys.Right:
                             if (SelectedNode != null && SelectedNode.Children.Count > 0)
                             {
                                 SelectedNode = SelectedNode.Children[0] as NodeViewData;
@@ -2891,7 +2800,7 @@ namespace Behaviac.Design
 
                             break;
 
-                        case (Keys.Up):
+                        case Keys.Up:
                             if (SelectedNode != null)
                             {
                                 if (!KeyShiftIsDown || !SwitchSelection())
@@ -2901,12 +2810,11 @@ namespace Behaviac.Design
                                     {
                                         if (SelectedNode.PreviousNode != null)
                                         {
-                                            if (KeyCtrlIsDown)   // Move
+                                            if (KeyCtrlIsDown) // Move
                                             {
                                                 MoveNode(true);
-
                                             }
-                                            else     // Select
+                                            else // Select
                                             {
                                                 SelectedNode = SelectedNode.PreviousNode as NodeViewData;
 
@@ -2925,15 +2833,14 @@ namespace Behaviac.Design
 
                                         if (previousItem != null)
                                         {
-                                            if (KeyCtrlIsDown)   // Move
+                                            if (KeyCtrlIsDown) // Move
                                             {
                                                 NodeViewData.SubItemAttachment sourceItem = SelectedNode.SelectedSubItem as NodeViewData.SubItemAttachment;
                                                 NodeViewData.SubItemAttachment targetItem = previousItem as NodeViewData.SubItemAttachment;
                                                 MoveSubItem(SelectedNode, SelectedNode, sourceItem, targetItem, true, false);
                                                 SelectedNode.SelectedSubItem = sourceItem;
-
                                             }
-                                            else     // Select
+                                            else // Select
                                             {
                                                 SelectedNode.SelectedSubItem = previousItem;
 
@@ -2951,7 +2858,7 @@ namespace Behaviac.Design
 
                             break;
 
-                        case (Keys.Down):
+                        case Keys.Down:
                             if (SelectedNode != null)
                             {
                                 if (!KeyShiftIsDown || !SwitchSelection())
@@ -2961,12 +2868,11 @@ namespace Behaviac.Design
                                     {
                                         if (SelectedNode.NextNode != null)
                                         {
-                                            if (KeyCtrlIsDown)   // Move
+                                            if (KeyCtrlIsDown) // Move
                                             {
                                                 MoveNode(false);
-
                                             }
-                                            else     // Select
+                                            else // Select
                                             {
                                                 SelectedNode = SelectedNode.NextNode as NodeViewData;
 
@@ -2985,15 +2891,14 @@ namespace Behaviac.Design
 
                                         if (nextItem != null)
                                         {
-                                            if (KeyCtrlIsDown)   // Move
+                                            if (KeyCtrlIsDown) // Move
                                             {
                                                 NodeViewData.SubItemAttachment sourceItem = SelectedNode.SelectedSubItem as NodeViewData.SubItemAttachment;
                                                 NodeViewData.SubItemAttachment targetItem = nextItem as NodeViewData.SubItemAttachment;
                                                 MoveSubItem(SelectedNode, SelectedNode, sourceItem, targetItem, false, false);
                                                 SelectedNode.SelectedSubItem = sourceItem;
-
                                             }
-                                            else     // Select
+                                            else // Select
                                             {
                                                 SelectedNode.SelectedSubItem = nextItem;
 
@@ -3027,8 +2932,8 @@ namespace Behaviac.Design
         {
             switch (e.KeyCode)
             {
-                    // store when the control key is pressed
-                case (Keys.ControlKey):
+                // store when the control key is pressed
+                case Keys.ControlKey:
                     if (_copiedNode == null && _movedNode == null)
                     {
                         Cursor = Cursors.Default;
@@ -3036,8 +2941,8 @@ namespace Behaviac.Design
 
                     break;
 
-                    // store when the shift key is pressed
-                case (Keys.ShiftKey):
+                // store when the shift key is pressed
+                case Keys.ShiftKey:
 
                     // update the drawn graph for dragging and duplicating
                     if (_movedNodeGraph != null)
@@ -3048,8 +2953,8 @@ namespace Behaviac.Design
 
                     break;
 
-                    // cut to clipboard
-                case (Keys.X):
+                // cut to clipboard
+                case Keys.X:
                     if (KeyCtrlIsDown)
                     {
                         CutSelectedNode(KeyShiftIsDown);
@@ -3057,8 +2962,8 @@ namespace Behaviac.Design
 
                     break;
 
-                    // copy to clipboard
-                case (Keys.C):
+                // copy to clipboard
+                case Keys.C:
                     if (KeyCtrlIsDown)
                     {
                         CopySelectedNode(KeyShiftIsDown);
@@ -3066,8 +2971,8 @@ namespace Behaviac.Design
 
                     break;
 
-                    // paste from clipboard
-                case (Keys.V):
+                // paste from clipboard
+                case Keys.V:
                     if (!_clipboardPasteMode)
                     {
                         _clipboardPasteMode = KeyCtrlIsDown && _clipboardNode != null;
@@ -3089,12 +2994,12 @@ namespace Behaviac.Design
 
                     break;
 
-                    // handle when the delete key is pressed
-                case (Keys.Delete):
+                // handle when the delete key is pressed
+                case Keys.Delete:
                     DeleteSelectedNode(KeyShiftIsDown);
                     break;
 
-                case (Keys.E):
+                case Keys.E:
                     if (e.Control)
                     {
                         CenterNode(_rootNodeView);
@@ -3102,7 +3007,7 @@ namespace Behaviac.Design
 
                     break;
 
-                case (Keys.Oemplus):
+                case Keys.Oemplus:
                     if (e.Control)
                     {
                         scaleGraph(0.1f * _nodeLayoutManager.Scale, false);
@@ -3110,7 +3015,7 @@ namespace Behaviac.Design
 
                     break;
 
-                case (Keys.OemMinus):
+                case Keys.OemMinus:
                     if (e.Control)
                     {
                         scaleGraph(-0.1f * _nodeLayoutManager.Scale, false);
@@ -3118,7 +3023,7 @@ namespace Behaviac.Design
 
                     break;
 
-                case (Keys.K):
+                case Keys.K:
                     if (e.Control)
                     {
                         CheckErrors(_rootNodeView.RootBehavior, false);
@@ -3126,18 +3031,16 @@ namespace Behaviac.Design
 
                     break;
 
-                case (Keys.F9):
+                case Keys.F9:
                     if (SelectedNode != null)
                     {
                         if (e.Shift)
                         {
                             SelectedNode.SetBreakpoint(HighlightBreakPoint.kExit);
-
                         }
                         else if (e.Control)
                         {
                             SelectedNode.SetBreakpoint(HighlightBreakPoint.kPlanning);
-
                         }
                         else
                         {
@@ -3149,44 +3052,42 @@ namespace Behaviac.Design
 
                     break;
 
-                case (Keys.F8):
+                case Keys.F8:
                     toggleEnableNode();
                     break;
 
-                case (Keys.F1):
+                case Keys.F1:
                     openDoc();
                     break;
 
-                case (Keys.Left):
-                case (Keys.Right):
-                case (Keys.Up):
-                case (Keys.Down):
+                case Keys.Left:
+                case Keys.Right:
+                case Keys.Up:
+                case Keys.Down:
                     if (e.Control)
                     {
                         switch (e.KeyCode)
                         {
-                            case (Keys.Left):
+                            case Keys.Left:
                                 _nodeLayoutManager.Offset = new PointF(_nodeLayoutManager.Offset.X - 10, _nodeLayoutManager.Offset.Y);
                                 Invalidate();
                                 break;
 
-                            case (Keys.Right):
+                            case Keys.Right:
                                 _nodeLayoutManager.Offset = new PointF(_nodeLayoutManager.Offset.X + 10, _nodeLayoutManager.Offset.Y);
                                 Invalidate();
                                 break;
 
-                            case (Keys.Up):
+                            case Keys.Up:
                                 _nodeLayoutManager.Offset = new PointF(_nodeLayoutManager.Offset.X, _nodeLayoutManager.Offset.Y - 10);
                                 Invalidate();
                                 break;
 
-                            case (Keys.Down):
+                            case Keys.Down:
                                 _nodeLayoutManager.Offset = new PointF(_nodeLayoutManager.Offset.X, _nodeLayoutManager.Offset.Y + 10);
                                 Invalidate();
                                 break;
                         }
-
-                        break;
                     }
 
                     break;
@@ -3204,7 +3105,7 @@ namespace Behaviac.Design
             const int WM_KEYUP = 0x101;
             const int WM_SYSKEYUP = 0x105;
 
-            Keys keyData = ((Keys)((int)((long)msg.WParam))) | Control.ModifierKeys;
+            Keys keyData = (Keys) (int) (long) msg.WParam | ModifierKeys;
             KeyEventArgs e = new KeyEventArgs(keyData);
 
             emptyButton.Focus();
@@ -3212,7 +3113,6 @@ namespace Behaviac.Design
             if (msg.Msg == WM_KEYDOWN || msg.Msg == WM_SYSKEYDOWN)
             {
                 OnKeyDown(e);
-
             }
             else if (msg.Msg == WM_KEYUP || msg.Msg == WM_SYSKEYUP)
             {
@@ -3297,7 +3197,7 @@ namespace Behaviac.Design
                     }
                 }
 
-                UndoManager.Save(this.RootNode);
+                UndoManager.Save(RootNode);
             }
         }
 
@@ -3414,7 +3314,7 @@ namespace Behaviac.Design
                 return;
             }
 
-            _clipboardRootNode = this.RootNodeView;
+            _clipboardRootNode = RootNodeView;
             _clipboardNode = null;
             _clipboardSubItem = null;
 
@@ -3422,14 +3322,13 @@ namespace Behaviac.Design
             {
                 if (SelectedNode.Node is ReferencedBehavior)
                 {
-                    _clipboardNode = (Node)SelectedNode.Node;
+                    _clipboardNode = SelectedNode.Node;
                 }
 
                 else
                 {
-                    _clipboardNode = copySubTree ? (Node)SelectedNode.Node.CloneBranch() : (Node)SelectedNode.Node.Clone();
+                    _clipboardNode = copySubTree ? SelectedNode.Node.CloneBranch() : (Node) SelectedNode.Node.Clone();
                 }
-
             }
             else
             {
@@ -3448,7 +3347,7 @@ namespace Behaviac.Design
             {
                 if (_clipboardNode.IsFSM)
                 {
-                    Node newnode = (Node)_clipboardNode.Clone();
+                    Node newnode = (Node) _clipboardNode.Clone();
 
                     // clear all targets
                     foreach (Attachments.Attachment attach in newnode.Attachments)
@@ -3459,18 +3358,17 @@ namespace Behaviac.Design
                         }
                     }
 
-                    this.addFSMNode(newnode, _lastMousePosition);
+                    addFSMNode(newnode, _lastMousePosition);
 
                     newnode.ResetId(true);
 
                     // automatically select the new node
                     _selectedNodePending = newnode;
 
-                    UndoManager.Save(this.RootNode);
+                    UndoManager.Save(RootNode);
 
                     LayoutChanged();
                 }
-
             }
             else if (_clipboardSubItem != null && _clipboardSubItem.SelectableObject != null)
             {
@@ -3499,7 +3397,7 @@ namespace Behaviac.Design
                             ClickEvent(SelectedNode);
                         }
 
-                        UndoManager.Save(this.RootNode);
+                        UndoManager.Save(RootNode);
 
                         LayoutChanged();
                     }
@@ -3521,7 +3419,7 @@ namespace Behaviac.Design
                 return;
             }
 
-            string[] actionNames = { HighlightBreakPoint.kEnter, HighlightBreakPoint.kExit };
+            string[] actionNames = {HighlightBreakPoint.kEnter, HighlightBreakPoint.kExit};
             string fullId = nvd.FullId;
 
             foreach (string actionName in actionNames)
@@ -3575,7 +3473,7 @@ namespace Behaviac.Design
 
                         if (node.Parent != null)
                         {
-                            Node parent = (Node)node.Parent;
+                            Node parent = (Node) node.Parent;
 
                             if (!string.IsNullOrEmpty(parent.PrefabName))
                             {
@@ -3588,19 +3486,16 @@ namespace Behaviac.Design
                         {
                             _selectedNodePending = node.NextNode as Node;
                             _selectedNodePendingParent = SelectedNode.Parent;
-
                         }
                         else if (node.PreviousNode != null)
                         {
                             _selectedNodePending = node.PreviousNode as Node;
                             _selectedNodePendingParent = SelectedNode.Parent;
-
                         }
                         else if (node.Parent != null)
                         {
                             _selectedNodePending = node.Parent as Node;
                             _selectedNodePendingParent = SelectedNode.Parent != null ? SelectedNode.Parent.Parent : null;
-
                         }
                         else
                         {
@@ -3614,7 +3509,7 @@ namespace Behaviac.Design
                         {
                             if (node.Parent != null)
                             {
-                                ((Node)node.Parent).RemoveChild(node.ParentConnector, node);
+                                ((Node) node.Parent).RemoveChild(node.ParentConnector, node);
 
                                 // keep the root node in the view
                                 KeepNodePosition(RootNodeView);
@@ -3624,7 +3519,6 @@ namespace Behaviac.Design
 
                                 isDeleted = true;
                             }
-
                         }
                         else if (node.IsFSM)
                         {
@@ -3635,7 +3529,6 @@ namespace Behaviac.Design
 
                                 isDeleted = true;
                             }
-
                         }
                         else if (node.ExtractNode())
                         {
@@ -3643,7 +3536,6 @@ namespace Behaviac.Design
                             removeBreakpoints(SelectedNode, false);
 
                             isDeleted = true;
-
                         }
                         else
                         {
@@ -3653,7 +3545,7 @@ namespace Behaviac.Design
 
                         if (isDeleted)
                         {
-                            Node root = (Node)this.RootNode;
+                            Node root = (Node) RootNode;
 
                             if (root.FSMNodes.Count == 0)
                             {
@@ -3668,13 +3560,12 @@ namespace Behaviac.Design
                                 }
                             }
 
-                            UndoManager.Save(this.RootNode);
+                            UndoManager.Save(RootNode);
                         }
 
                         SelectedNode = null;
                         _currentNode = null;
                     }
-
                 }
                 else
                 {
@@ -3695,7 +3586,7 @@ namespace Behaviac.Design
                             node.HasOwnPrefabData = true;
                         }
 
-                        UndoManager.Save(this.RootNode);
+                        UndoManager.Save(RootNode);
 
                         // select the next subitem automatically
                         if (nextItem != null)
@@ -3717,7 +3608,6 @@ namespace Behaviac.Design
                             {
                                 ClickEvent(SelectedNode);
                             }
-
                         }
                         else
                         {
@@ -3775,7 +3665,6 @@ namespace Behaviac.Design
                 // Open the referenced tree file in the event.
                 Attachments.Event evt = SelectedNode.SelectedSubItem.SelectableObject as Attachments.Event;
                 UIUtilities.ShowBehaviorTree(evt.ReferenceFilename);
-
             }
             else if (SelectedNode.Node != null)
             {
@@ -3819,7 +3708,7 @@ namespace Behaviac.Design
             string filename = Path.Combine(folder, "rf_" + SelectedNode.Node.ExportClass);
             filename = Path.ChangeExtension(filename, ext);
 
-            using(SaveAsDialog saveAsDialog = new SaveAsDialog(true))
+            using (SaveAsDialog saveAsDialog = new SaveAsDialog(true))
             {
                 saveAsDialog.Text = Resources.SaveAsReference;
                 saveAsDialog.FileName = _behaviorTreeList.GetUniqueFileName(filename);
@@ -3836,18 +3725,18 @@ namespace Behaviac.Design
 
                     // Create a new behavior node.
                     BehaviorNode behaviorNode = Node.CreateBehaviorNode(SelectedNode.Node.ExportClass);
-                    ((Node)behaviorNode).AddChild(behaviorNode.GenericChildren, SelectedNode.Node);
-                    ((Behavior)behaviorNode).AgentType = ((Behavior)_rootNodeView.RootBehavior).AgentType;
+                    ((Node) behaviorNode).AddChild(behaviorNode.GenericChildren, SelectedNode.Node);
+                    ((Behavior) behaviorNode).AgentType = ((Behavior) _rootNodeView.RootBehavior).AgentType;
 
                     // Copy the used Pars from the current behavior to the new one.
-                    foreach (ParInfo par in((Behavior)_rootNodeView.RootBehavior).LocalVars)
+                    foreach (ParInfo par in ((Behavior) _rootNodeView.RootBehavior).LocalVars)
                     {
                         List<Node.ErrorCheck> result = new List<Node.ErrorCheck>();
                         Plugin.CheckPar(SelectedNode.Node, par, ref result);
 
                         if (result.Count > 0)
                         {
-                            ((Behavior)behaviorNode).LocalVars.Add(par);
+                            ((Behavior) behaviorNode).LocalVars.Add(par);
                         }
                     }
 
@@ -3864,7 +3753,7 @@ namespace Behaviac.Design
                     ReferencedBehavior refNode = Node.CreateReferencedBehaviorNode(_rootNodeView.RootBehavior, behaviorNode);
 
                     // Add the new referenced node.
-                    Node newNode = refNode as Node;
+                    Node newNode = refNode;
                     parentNode.AddChild(parentConnector, newNode, index);
 
                     // Select the new node automatically.
@@ -3872,7 +3761,7 @@ namespace Behaviac.Design
                     _selectedNodePendingParent = SelectedNode.Parent;
 
                     newNode.ResetId(true);
-                    UndoManager.Save(this.RootNode);
+                    UndoManager.Save(RootNode);
 
                     LayoutChanged();
                 }
@@ -3923,7 +3812,7 @@ namespace Behaviac.Design
             string ext = Path.GetExtension(_rootNodeView.RootBehavior.FileManager.Filename);
             filename = Path.ChangeExtension(filename, ext);
 
-            using(SaveAsDialog saveAsDialog = new SaveAsDialog(false))
+            using (SaveAsDialog saveAsDialog = new SaveAsDialog(false))
             {
                 saveAsDialog.Text = Resources.SaveAsPrefab;
                 saveAsDialog.FileName = _behaviorTreeList.GetUniqueFileName(filename);
@@ -3935,10 +3824,10 @@ namespace Behaviac.Design
                     // Create a new behavior node.
                     BehaviorNode behaviorNode = Node.CreateBehaviorNode(SelectedNode.Node.ExportClass);
                     behaviorNode.AgentType = _rootNodeView.RootBehavior.AgentType;
-                    ((Node)behaviorNode).AddChild(behaviorNode.GenericChildren, SelectedNode.Node.CloneBranch());
+                    ((Node) behaviorNode).AddChild(behaviorNode.GenericChildren, SelectedNode.Node.CloneBranch());
 
                     string prefabName = FileManagers.FileManager.GetRelativePath(filename);
-                    ((Node)behaviorNode).RestorePrefab(prefabName);
+                    ((Node) behaviorNode).RestorePrefab(prefabName);
 
                     SelectedNode.Node.SetPrefab(prefabName);
                     SelectedNode.IsExpanded = false;
@@ -3950,14 +3839,14 @@ namespace Behaviac.Design
                     }
 
                     // Copy the used Pars from the current behavior to the new one.
-                    foreach (ParInfo par in((Behavior)_rootNodeView.RootBehavior).LocalVars)
+                    foreach (ParInfo par in ((Behavior) _rootNodeView.RootBehavior).LocalVars)
                     {
                         List<Node.ErrorCheck> result = new List<Node.ErrorCheck>();
                         Plugin.CheckPar(SelectedNode.Node, par, ref result);
 
                         if (result.Count > 0)
                         {
-                            ((Behavior)behaviorNode).LocalVars.Add(par);
+                            ((Behavior) behaviorNode).LocalVars.Add(par);
                         }
                     }
 
@@ -3965,7 +3854,7 @@ namespace Behaviac.Design
                     behaviorNode.FileManager = _behaviorTreeList.GetFileManagers()[0].Create(filename, behaviorNode);
                     behaviorNode.FileManager.Save();
 
-                    UndoManager.Save(this.RootNode);
+                    UndoManager.Save(RootNode);
 
                     // Update the behavior list.
                     _behaviorTreeList.RebuildBehaviorList();
@@ -3990,7 +3879,7 @@ namespace Behaviac.Design
         {
             if (SelectedNode != null && SelectedNode.Node.BreakPrefabInstance())
             {
-                UndoManager.Save(this.RootNode);
+                UndoManager.Save(RootNode);
             }
         }
 
@@ -4026,7 +3915,7 @@ namespace Behaviac.Design
             e.Effect = DragDropEffects.None;
 
             // process dragging the property and method string value from the Meta Browser
-            string dragItem = (string)e.Data.GetData(DataFormats.Text);
+            string dragItem = (string) e.Data.GetData(DataFormats.Text);
 
             if (!string.IsNullOrEmpty(dragItem) &&
                 _dragTargetNode != null && _dragTargetNode.Node != null &&
@@ -4042,10 +3931,9 @@ namespace Behaviac.Design
             // make sure the correct drag attach mode is set
             if (_dragTargetNode != null)
             {
-                if (_dragNodeDefaults is Nodes.Node && _dragAttachMode == NodeAttachMode.Attachment)
+                if (_dragNodeDefaults is Node && _dragAttachMode == NodeAttachMode.Attachment)
                 {
                     _dragAttachMode = NodeAttachMode.None;
-
                 }
                 else if (_dragNodeDefaults is Attachments.Attachment && _dragAttachMode != NodeAttachMode.Attachment)
                 {
@@ -4054,10 +3942,10 @@ namespace Behaviac.Design
             }
 
             // check if we are trying to drop a node on another one
-            if (_dragTargetNode != null && (e.KeyState & 1/*left mouse button*/) > 0)
+            if (_dragTargetNode != null && (e.KeyState & 1 /*left mouse button*/) > 0)
             {
                 if (_dragNodeDefaults != null &&
-                    (_dragNodeDefaults is Nodes.Node && (_dragAttachMode != NodeAttachMode.None || !(_dragNodeDefaults is Nodes.BehaviorNode) || !(_dragTargetNode.Node is Nodes.BehaviorNode)) ||
+                    (_dragNodeDefaults is Node && (_dragAttachMode != NodeAttachMode.None || !(_dragNodeDefaults is BehaviorNode) || !(_dragTargetNode.Node is BehaviorNode)) ||
                      _dragNodeDefaults is Attachments.Attachment && _dragTargetNode.Node.AcceptsAttachment(_dragNodeDefaults)))
                 {
                     e.Effect = DragDropEffects.Move;
@@ -4071,7 +3959,7 @@ namespace Behaviac.Design
                 e.Effect = DragDropEffects.None;
             }
 
-            if (_rootNodeView.IsFSM || _rootNodeView.Children.Count == 0)   // fsm or empty behavior
+            if (_rootNodeView.IsFSM || _rootNodeView.Children.Count == 0) // fsm or empty behavior
             {
                 if (_dragNodeDefaults != null)
                 {
@@ -4090,7 +3978,6 @@ namespace Behaviac.Design
                             //    e.Effect = DragDropEffects.None;
                             //}
                         }
-
                     }
                     else if (_dragNodeDefaults is Attachments.Attachment)
                     {
@@ -4098,7 +3985,7 @@ namespace Behaviac.Design
 
                         if (dragAttachment.IsFSM)
                         {
-                            if (_dragTargetNode != null && !(_dragTargetNode.Node is Nodes.BehaviorNode) &&
+                            if (_dragTargetNode != null && !(_dragTargetNode.Node is BehaviorNode) &&
                                 _dragTargetNode.Node.AcceptsAttachment(dragAttachment))
                             {
                                 e.Effect = DragDropEffects.Move;
@@ -4123,7 +4010,7 @@ namespace Behaviac.Design
             Focus();
 
             // drag the property or method into the node
-            string dragItem = (string)e.Data.GetData(DataFormats.Text);
+            string dragItem = (string) e.Data.GetData(DataFormats.Text);
 
             if (!string.IsNullOrEmpty(dragItem) && _dragTargetNode != null && _dragTargetNode.Node != null)
             {
@@ -4134,7 +4021,7 @@ namespace Behaviac.Design
                         ClickNode(_dragTargetNode);
                     }
 
-                    UndoManager.Save(this.RootNode);
+                    UndoManager.Save(RootNode);
 
                     LayoutChanged();
                 }
@@ -4143,24 +4030,24 @@ namespace Behaviac.Design
             }
 
             // get source node
-            TreeNode sourceNode = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
+            TreeNode sourceNode = (TreeNode) e.Data.GetData("System.Windows.Forms.TreeNode");
 
             if (sourceNode == null)
             {
                 return;
             }
 
-            NodeTag sourceNodeTag = (NodeTag)sourceNode.Tag;
+            NodeTag sourceNodeTag = (NodeTag) sourceNode.Tag;
 
             // keep the current node position
             //KeepNodePosition(_dragTargetNode);
 
-            bool bDragBTOverNode = !((Node)this.RootNode).IsFSM && sourceNodeTag.Type == NodeTagType.Behavior && _dragTargetNode is Behaviac.Design.NodeViewData;
+            bool bDragBTOverNode = !((Node) RootNode).IsFSM && sourceNodeTag.Type == NodeTagType.Behavior && _dragTargetNode is NodeViewData;
 
             // check if we are dropping an attach
             // or if we are dropping a bt to a node and the indicator is not left/right/up/bottom/center
             if (_dragAttachMode == NodeAttachMode.Attachment ||
-                (bDragBTOverNode && (_dragAttachMode == NodeAttachMode.None || _dragAttachMode == NodeAttachMode.Attachment)))
+                bDragBTOverNode && (_dragAttachMode == NodeAttachMode.None || _dragAttachMode == NodeAttachMode.Attachment))
             {
                 Attachments.Attachment attach = null;
 
@@ -4170,7 +4057,7 @@ namespace Behaviac.Design
                     //drag an event(a bt) to a node
                     if (!File.Exists(sourceNodeTag.Filename))
                     {
-                        MainWindow.Instance.SaveBehavior(sourceNodeTag.Defaults as Nodes.BehaviorNode, false);
+                        MainWindow.Instance.SaveBehavior(sourceNodeTag.Defaults as BehaviorNode);
                     }
 
                     if (File.Exists(sourceNodeTag.Filename))
@@ -4185,18 +4072,17 @@ namespace Behaviac.Design
                             return;
                         }
 
-                        attach = Behaviac.Design.Attachments.Attachment.Create(typeof(Behaviac.Design.Attachments.Event), _dragTargetNode.Node);
-                        Behaviac.Design.Attachments.Event evt = (Behaviac.Design.Attachments.Event)attach;
+                        attach = Attachments.Attachment.Create(typeof(Attachments.Event), _dragTargetNode.Node);
+                        Attachments.Event evt = (Attachments.Event) attach;
                         evt.ReferencedBehavior = behavior;
                     }
-
                 }
                 else if (_dragTargetNode != null)
                 {
                     Debug.Check(_dragAttachMode == NodeAttachMode.Attachment);
 
                     // add the attach to the target node
-                    attach = Behaviac.Design.Attachments.Attachment.Create(sourceNodeTag.NodeType, _dragTargetNode.Node);
+                    attach = Attachments.Attachment.Create(sourceNodeTag.NodeType, _dragTargetNode.Node);
                 }
 
                 if (_dragTargetNode != null && attach != null && _dragTargetNode.Node.AcceptsAttachment(attach))
@@ -4218,7 +4104,7 @@ namespace Behaviac.Design
                         ClickEvent(SelectedNode);
                     }
 
-                    UndoManager.Save(this.RootNode);
+                    UndoManager.Save(RootNode);
 
                     LayoutChanged();
                 }
@@ -4228,7 +4114,7 @@ namespace Behaviac.Design
             else
             {
                 // attach a new node to the target node
-                InsertNewNode(_dragTargetNode, _dragAttachMode, sourceNodeTag, this.PointToClient(new Point(e.X, e.Y)));
+                InsertNewNode(_dragTargetNode, _dragAttachMode, sourceNodeTag, PointToClient(new Point(e.X, e.Y)));
             }
 
             // reset drag stuff
@@ -4244,7 +4130,7 @@ namespace Behaviac.Design
         /// </summary>
         private void BehaviorTreeView_DragEnter(object sender, DragEventArgs e)
         {
-            TreeNode sourceNode = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
+            TreeNode sourceNode = (TreeNode) e.Data.GetData("System.Windows.Forms.TreeNode");
 
             if (sourceNode != null)
             {
@@ -4263,7 +4149,7 @@ namespace Behaviac.Design
         /// <summary>
         /// Holds if we have the position of a previous dialogue stored.
         /// </summary>
-        private static bool _hasOldCheckDialogPosition = false;
+        private static bool _hasOldCheckDialogPosition;
 
         /// <summary>
         /// The previous position of the check dialogue.
@@ -4286,10 +4172,10 @@ namespace Behaviac.Design
 
             //PropertiesDock.UpdatePropertyGrids();
 
-            this.Redraw();
+            Redraw();
         }
 
-        public void CheckErrors(Behaviac.Design.Nodes.BehaviorNode node, bool errorDialogHidesIfNoError)
+        public void CheckErrors(BehaviorNode node, bool errorDialogHidesIfNoError)
         {
             // check the current behaviour for errors
             List<Node.ErrorCheck> result = new List<Node.ErrorCheck>();
@@ -4314,11 +4200,11 @@ namespace Behaviac.Design
 
             // prepare the new dialogue
             _errorCheckDialog = new ErrorCheckDialog();
-            _errorCheckDialog.Owner = this.ParentForm;
+            _errorCheckDialog.Owner = ParentForm;
             _errorCheckDialog.BehaviorTreeList = _behaviorTreeList;
             _errorCheckDialog.BehaviorTreeView = this;
             _errorCheckDialog.Text = title;
-            _errorCheckDialog.FormClosed += new FormClosedEventHandler(errorCheckDialog_FormClosed);
+            _errorCheckDialog.FormClosed += errorCheckDialog_FormClosed;
 
             // add the errors to the check dialogue
             foreach (Node.ErrorCheck check in result)
@@ -4354,15 +4240,15 @@ namespace Behaviac.Design
 
                 switch (check.Level)
                 {
-                    case (ErrorCheckLevel.Message):
+                    case ErrorCheckLevel.Message:
                         item.ImageIndex = 0;
                         break;
 
-                    case (ErrorCheckLevel.Warning):
+                    case ErrorCheckLevel.Warning:
                         item.ImageIndex = 1;
                         break;
 
-                    case (ErrorCheckLevel.Error):
+                    case ErrorCheckLevel.Error:
                         item.ImageIndex = 2;
                         break;
                 }
@@ -4373,7 +4259,7 @@ namespace Behaviac.Design
             // if no errors were found, tell the user so
             if (result.Count < 1)
             {
-                _errorCheckDialog.listView.Items.Add(new ListViewItem("No Errors.", (int)ErrorCheckLevel.Message));
+                _errorCheckDialog.listView.Items.Add(new ListViewItem("No Errors.", (int) ErrorCheckLevel.Message));
             }
 
             // show the dialogue
@@ -4399,6 +4285,56 @@ namespace Behaviac.Design
             _errorCheckDialog = null;
         }
 
+        public void FastExport()
+        {
+            try
+            {
+                List<Node.ErrorCheck> result = new List<Node.ErrorCheck>();
+                _rootNodeView.Node.CheckForErrors(_rootNodeView.RootBehavior, result);
+
+                var hasErrors = Plugin.GetErrorChecks(result).Count > 0;
+
+//                if (!hasErrors && hasWarnings)
+//                {
+//                    DialogResult dr = MessageBox.Show(Resources.ExportWarningInfo, Resources.ExportWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+//
+//                    if (dr == DialogResult.Yes)
+//                    {
+//                        ignoreErrors = true;
+//                    }
+//
+//                    else
+//                    {
+//                        hasErrors = true;
+//                    }
+//                }
+
+                if (hasErrors)
+                {
+                    CheckErrors(_rootNodeView.RootBehavior, true);
+                }
+                else
+                {
+                    var listFileType = Settings.Default.FastExportFileType;
+                    if (listFileType == null || listFileType.Count <= 0)
+                    {
+                        MessageBox.Show("No fast export type selected. Check settings.");
+                        return;
+                    }
+
+                    foreach (var afileType in listFileType)
+                    {
+                        _behaviorTreeList.ExportBehavior(_rootNodeView.RootBehavior, afileType, true);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Resources.ExportError, MessageBoxButtons.OK);
+            }
+        }
+
+
         public void Export()
         {
             try
@@ -4406,7 +4342,7 @@ namespace Behaviac.Design
                 List<Node.ErrorCheck> result = new List<Node.ErrorCheck>();
                 _rootNodeView.Node.CheckForErrors(_rootNodeView.RootBehavior, result);
 
-                bool hasErrors = Plugin.GetErrorChecks(result, ErrorCheckLevel.Error).Count > 0;
+                bool hasErrors = Plugin.GetErrorChecks(result).Count > 0;
                 bool hasWarnings = Plugin.GetErrorChecks(result, ErrorCheckLevel.Warning).Count > 0;
                 bool ignoreErrors = false;
 
@@ -4434,7 +4370,6 @@ namespace Behaviac.Design
                 {
                     _behaviorTreeList.ExportBehavior(_rootNodeView.RootBehavior, "", ignoreErrors);
                 }
-
             }
             catch (Exception ex)
             {
@@ -4469,7 +4404,7 @@ namespace Behaviac.Design
 
                 if (behavior != null)
                 {
-                    return MainWindow.Instance.SaveBehavior(behavior, false);
+                    return MainWindow.Instance.SaveBehavior(behavior);
                 }
             }
 
@@ -4623,7 +4558,7 @@ namespace Behaviac.Design
         /// <summary>
         /// Stores if the root behavior is supposed to be centres or not.
         /// </summary>
-        protected bool _pendingCenterBehavior = false;
+        protected bool _pendingCenterBehavior;
 
         /// <summary>
         /// Centres the given node in the view.
@@ -4649,13 +4584,13 @@ namespace Behaviac.Design
                 NodeLayoutManager nlm = new NodeLayoutManager(_nodeLayoutManager.RootNodeLayout, _nodeLayoutManager.EdgePen, _nodeLayoutManager.EdgePenSelected, _nodeLayoutManager.EdgePenHighlighted, _nodeLayoutManager.EdgePenUpdate, _nodeLayoutManager.EdgePenReadOnly, false);
                 nlm.Offset = new PointF(1.0f, 1.0f);
 
-                using(Graphics g = CreateGraphics())
+                using (Graphics g = CreateGraphics())
                 {
                     nlm.UpdateLayout(g);
                 }
 
                 SizeF totalSize = nlm.RootNodeLayout.GetTotalSize(nlm.Padding.Width, int.MaxValue);
-                Size newimageSize = new Size((int)Math.Ceiling(totalSize.Width) + 2, (int)Math.Ceiling(totalSize.Height) + 2);
+                Size newimageSize = new Size((int) Math.Ceiling(totalSize.Width) + 2, (int) Math.Ceiling(totalSize.Height) + 2);
 
                 Graphics formGraphics = null;
                 IntPtr hdc = new IntPtr();
@@ -4675,7 +4610,7 @@ namespace Behaviac.Design
                     img = new Bitmap(newimageSize.Width, newimageSize.Height);
                 }
 
-                using(Graphics graphics = Graphics.FromImage(img))
+                using (Graphics graphics = Graphics.FromImage(img))
                 {
                     nlm.DrawGraph(graphics, new PointF());
                 }
@@ -4730,7 +4665,6 @@ namespace Behaviac.Design
                 if (SelectedNode.SelectedSubItem != null && SelectedNode.SelectedSubItem.SelectableObject != null)
                 {
                     selectedNode = SelectedNode.SelectedSubItem.SelectableObject;
-
                 }
                 else
                 {
@@ -4738,7 +4672,7 @@ namespace Behaviac.Design
                 }
             }
 
-            PropertiesDock.InspectObject(this.RootNode, selectedNode, false);
+            PropertiesDock.InspectObject(RootNode, selectedNode, false);
         }
 
         protected override void OnLostFocus(EventArgs e)

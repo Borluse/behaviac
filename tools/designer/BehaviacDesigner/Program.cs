@@ -162,7 +162,7 @@ namespace Behaviac.Design
             // Duplicate Stderr handle to save initial value
             DuplicateHandle(hProcess, hStdErr, hProcess, out hStdErrDup,
                             0, true, DUPLICATE_SAME_ACCESS);
-            // Attach to console window ¨C this may modify the standard handles
+            // Attach to console window â€“ this may modify the standard handles
             AttachConsole(ATTACH_PARENT_PROCESS);
 
             // Adjust the standard handles

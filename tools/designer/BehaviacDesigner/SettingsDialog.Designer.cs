@@ -42,7 +42,7 @@ namespace Behaviac.Design
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsDialog));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Behaviac.Design.SettingsDialog));
             this.acceptButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.nodeToolTipsCheckBox = new System.Windows.Forms.CheckBox();
@@ -63,13 +63,10 @@ namespace Behaviac.Design
             this.concurrentProcessBehaviorsCheckBox = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.Choose = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            ((System.ComponentModel.ISupportInitialize)(this.displayLengthNumericUpDown)).BeginInit();
+            this.Choose = ((System.Windows.Forms.ColumnHeader) (new System.Windows.Forms.ColumnHeader()));
+            ((System.ComponentModel.ISupportInitialize) (this.displayLengthNumericUpDown)).BeginInit();
             this.SuspendLayout();
-            // 
-            // acceptButton
-            // 
-            this.acceptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.acceptButton.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (65)))), ((int) (((byte) (65)))), ((int) (((byte) (65)))));
             this.acceptButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.acceptButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
             this.acceptButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
@@ -77,144 +74,83 @@ namespace Behaviac.Design
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.UseVisualStyleBackColor = false;
             this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.cancelButton.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (65)))), ((int) (((byte) (65)))), ((int) (((byte) (65)))));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
             this.cancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
             resources.ApplyResources(this.cancelButton, "cancelButton");
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.UseVisualStyleBackColor = false;
-            // 
-            // nodeToolTipsCheckBox
-            // 
-            this.nodeToolTipsCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.nodeToolTipsCheckBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
             this.nodeToolTipsCheckBox.ForeColor = System.Drawing.Color.LightGray;
             resources.ApplyResources(this.nodeToolTipsCheckBox, "nodeToolTipsCheckBox");
             this.nodeToolTipsCheckBox.Name = "nodeToolTipsCheckBox";
             this.nodeToolTipsCheckBox.UseVisualStyleBackColor = false;
-            // 
-            // showControlsCheckBox
-            // 
             resources.ApplyResources(this.showControlsCheckBox, "showControlsCheckBox");
-            this.showControlsCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.showControlsCheckBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
             this.showControlsCheckBox.ForeColor = System.Drawing.Color.LightGray;
             this.showControlsCheckBox.Name = "showControlsCheckBox";
             this.showControlsCheckBox.UseVisualStyleBackColor = false;
-            // 
-            // checkBoxChecktheLatest
-            // 
             resources.ApplyResources(this.checkBoxChecktheLatest, "checkBoxChecktheLatest");
-            this.checkBoxChecktheLatest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.checkBoxChecktheLatest.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
             this.checkBoxChecktheLatest.ForeColor = System.Drawing.Color.LightGray;
             this.checkBoxChecktheLatest.Name = "checkBoxChecktheLatest";
             this.checkBoxChecktheLatest.UseVisualStyleBackColor = false;
-            // 
-            // dumpConnectDataCheckBox
-            // 
             resources.ApplyResources(this.dumpConnectDataCheckBox, "dumpConnectDataCheckBox");
-            this.dumpConnectDataCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.dumpConnectDataCheckBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
             this.dumpConnectDataCheckBox.ForeColor = System.Drawing.Color.LightGray;
             this.dumpConnectDataCheckBox.Name = "dumpConnectDataCheckBox";
             this.dumpConnectDataCheckBox.UseVisualStyleBackColor = false;
-            // 
-            // languageLabel
-            // 
             resources.ApplyResources(this.languageLabel, "languageLabel");
             this.languageLabel.Name = "languageLabel";
-            // 
-            // languageComboBox
-            // 
-            this.languageComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.languageComboBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (65)))), ((int) (((byte) (65)))), ((int) (((byte) (65)))));
             this.languageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.languageComboBox, "languageComboBox");
             this.languageComboBox.ForeColor = System.Drawing.Color.LightGray;
             this.languageComboBox.FormattingEnabled = true;
-            this.languageComboBox.Items.AddRange(new object[] {
-            resources.GetString("languageComboBox.Items"),
-            resources.GetString("languageComboBox.Items1"),
-            resources.GetString("languageComboBox.Items2")});
+            this.languageComboBox.Items.AddRange(new object[] {resources.GetString("languageComboBox.Items"), resources.GetString("languageComboBox.Items1"), resources.GetString("languageComboBox.Items2")});
             this.languageComboBox.Name = "languageComboBox";
-            // 
-            // showVersionCheckBox
-            // 
             resources.ApplyResources(this.showVersionCheckBox, "showVersionCheckBox");
-            this.showVersionCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.showVersionCheckBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
             this.showVersionCheckBox.ForeColor = System.Drawing.Color.LightGray;
             this.showVersionCheckBox.Name = "showVersionCheckBox";
             this.showVersionCheckBox.UseVisualStyleBackColor = false;
-            // 
-            // useBasicDisplayNameCheckBox
-            // 
             resources.ApplyResources(this.useBasicDisplayNameCheckBox, "useBasicDisplayNameCheckBox");
-            this.useBasicDisplayNameCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.useBasicDisplayNameCheckBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
             this.useBasicDisplayNameCheckBox.ForeColor = System.Drawing.Color.LightGray;
             this.useBasicDisplayNameCheckBox.Name = "useBasicDisplayNameCheckBox";
             this.useBasicDisplayNameCheckBox.UseVisualStyleBackColor = false;
-            // 
-            // showProfileCheckBox
-            // 
             resources.ApplyResources(this.showProfileCheckBox, "showProfileCheckBox");
-            this.showProfileCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.showProfileCheckBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
             this.showProfileCheckBox.ForeColor = System.Drawing.Color.LightGray;
             this.showProfileCheckBox.Name = "showProfileCheckBox";
             this.showProfileCheckBox.UseVisualStyleBackColor = false;
-            // 
-            // checkBoxTweatAsError
-            // 
             resources.ApplyResources(this.checkBoxTweatAsError, "checkBoxTweatAsError");
-            this.checkBoxTweatAsError.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.checkBoxTweatAsError.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
             this.checkBoxTweatAsError.ForeColor = System.Drawing.Color.LightGray;
             this.checkBoxTweatAsError.Name = "checkBoxTweatAsError";
             this.checkBoxTweatAsError.UseVisualStyleBackColor = false;
-            // 
-            // limitDisplayLengthCheckBox
-            // 
             resources.ApplyResources(this.limitDisplayLengthCheckBox, "limitDisplayLengthCheckBox");
-            this.limitDisplayLengthCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.limitDisplayLengthCheckBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
             this.limitDisplayLengthCheckBox.ForeColor = System.Drawing.Color.LightGray;
             this.limitDisplayLengthCheckBox.Name = "limitDisplayLengthCheckBox";
             this.limitDisplayLengthCheckBox.UseVisualStyleBackColor = false;
-            // 
-            // displayLengthNumericUpDown
-            // 
-            this.displayLengthNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.displayLengthNumericUpDown.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (65)))), ((int) (((byte) (65)))), ((int) (((byte) (65)))));
             this.displayLengthNumericUpDown.ForeColor = System.Drawing.Color.LightGray;
             resources.ApplyResources(this.displayLengthNumericUpDown, "displayLengthNumericUpDown");
-            this.displayLengthNumericUpDown.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+            this.displayLengthNumericUpDown.Minimum = new decimal(new int[] {10, 0, 0, 0});
             this.displayLengthNumericUpDown.Name = "displayLengthNumericUpDown";
-            this.displayLengthNumericUpDown.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            // 
-            // themeComboBox
-            // 
-            this.themeComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.displayLengthNumericUpDown.Value = new decimal(new int[] {30, 0, 0, 0});
+            this.themeComboBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (65)))), ((int) (((byte) (65)))), ((int) (((byte) (65)))));
             this.themeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.themeComboBox, "themeComboBox");
             this.themeComboBox.ForeColor = System.Drawing.Color.LightGray;
             this.themeComboBox.FormattingEnabled = true;
-            this.themeComboBox.Items.AddRange(new object[] {
-            resources.GetString("themeComboBox.Items"),
-            resources.GetString("themeComboBox.Items1")});
+            this.themeComboBox.Items.AddRange(new object[] {resources.GetString("themeComboBox.Items"), resources.GetString("themeComboBox.Items1")});
             this.themeComboBox.Name = "themeComboBox";
-            // 
-            // themLabel
-            // 
             resources.ApplyResources(this.themLabel, "themLabel");
             this.themLabel.Name = "themLabel";
-            // 
-            // resetLayoutButton
-            // 
-            this.resetLayoutButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.resetLayoutButton.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (65)))), ((int) (((byte) (65)))), ((int) (((byte) (65)))));
             this.resetLayoutButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.resetLayoutButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
             this.resetLayoutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
@@ -222,40 +158,24 @@ namespace Behaviac.Design
             this.resetLayoutButton.Name = "resetLayoutButton";
             this.resetLayoutButton.UseVisualStyleBackColor = false;
             this.resetLayoutButton.Click += new System.EventHandler(this.resetLayoutButton_Click);
-            // 
-            // concurrentProcessBehaviorsCheckBox
-            // 
             resources.ApplyResources(this.concurrentProcessBehaviorsCheckBox, "concurrentProcessBehaviorsCheckBox");
-            this.concurrentProcessBehaviorsCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.concurrentProcessBehaviorsCheckBox.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
             this.concurrentProcessBehaviorsCheckBox.ForeColor = System.Drawing.Color.LightGray;
             this.concurrentProcessBehaviorsCheckBox.Name = "concurrentProcessBehaviorsCheckBox";
             this.concurrentProcessBehaviorsCheckBox.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            // 
-            // listView1
-            // 
             this.listView1.CheckBoxes = true;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Choose});
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {this.Choose});
             resources.ApplyResources(this.listView1, "listView1");
             this.listView1.Name = "listView1";
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // Choose
-            // 
             resources.ApplyResources(this.Choose, "Choose");
-            // 
-            // SettingsDialog
-            // 
             this.AcceptButton = this.acceptButton;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
             this.CancelButton = this.cancelButton;
             this.ControlBox = false;
             this.Controls.Add(this.listView1);
@@ -285,10 +205,9 @@ namespace Behaviac.Design
             this.MinimizeBox = false;
             this.Name = "SettingsDialog";
             this.Load += new System.EventHandler(this.SettingsDialog_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.displayLengthNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.displayLengthNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
