@@ -762,4 +762,7 @@ Are you sure to continue?</value>
   <data name="NullWorkspace" xml:space="preserve">
     <value>You should create or load a workspace firstly!</value>
   </data>
+  <data name="NoFastExportSetting" xml:space="preserve">
+    <value>No fast export type selected. Check settings.</value>
+  </data>
 </root>

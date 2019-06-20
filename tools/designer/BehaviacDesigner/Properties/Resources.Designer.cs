@@ -1328,6 +1328,15 @@ namespace Behaviac.Design.Properties {
         }
         
         /// <summary>
+        ///   查找类似 No fast export type selected. Check settings. 的本地化字符串。
+        /// </summary>
+        internal static string NoFastExportSetting {
+            get {
+                return ResourceManager.GetString("NoFastExportSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Normal Mode [Alt to Pan Mode] : Middle drag to pan, middle wheel to scale 的本地化字符串。
         /// </summary>
         internal static string NormalMode {

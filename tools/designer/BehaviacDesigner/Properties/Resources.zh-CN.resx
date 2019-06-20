@@ -752,4 +752,7 @@
   <data name="NullWorkspace" xml:space="preserve">
     <value>首先需要加载或创建工作区！</value>
   </data>
+  <data name="NoFastExportSetting" xml:space="preserve">
+    <value>没有设置快速导出，请去设置界面</value>
+  </data>
 </root>

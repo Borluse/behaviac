@@ -4318,7 +4318,7 @@ namespace Behaviac.Design
                     var listFileType = Settings.Default.FastExportFileType;
                     if (listFileType == null || listFileType.Count <= 0)
                     {
-                        MessageBox.Show("No fast export type selected. Check settings.");
+                        MessageBox.Show(Resources.NoFastExportSetting);
                         return;
                     }
 
