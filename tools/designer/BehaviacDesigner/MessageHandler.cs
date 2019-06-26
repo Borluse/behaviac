@@ -43,6 +43,7 @@ namespace Behaviac.Design
         {
             try
             {
+                System.Diagnostics.Debug.WriteLine(_msg);
                 //skip index
                 //string msg = _msg.Substring(10);
                 int pos = _msg.IndexOf("][");

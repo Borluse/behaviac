@@ -42,28 +42,39 @@ namespace Behaviac.Design
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Behaviac.Design.ConnectDialog));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectDialog));
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.List_Name = new System.Windows.Forms.ColumnHeader();
-            this.List_Port = new System.Windows.Forms.ColumnHeader();
+            this.List_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.List_Port = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
             resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
+            // 
+            // btnOk
+            // 
+            this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
             this.btnOk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
             resources.ApplyResources(this.btnOk, "btnOk");
             this.btnOk.Name = "btnOk";
             this.btnOk.UseVisualStyleBackColor = false;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {this.List_Name, this.List_Port});
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.List_Name,
+            this.List_Port});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             resources.ApplyResources(this.listView1, "listView1");
@@ -72,12 +83,21 @@ namespace Behaviac.Design
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.OnItemSelected);
+            // 
+            // List_Name
+            // 
             resources.ApplyResources(this.List_Name, "List_Name");
+            // 
+            // List_Port
+            // 
             resources.ApplyResources(this.List_Port, "List_Port");
+            // 
+            // ConnectDialog
+            // 
             this.AcceptButton = this.btnOk;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (56)))), ((int) (((byte) (56)))), ((int) (((byte) (56)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.CancelButton = this.btnCancel;
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnCancel);
@@ -89,6 +109,7 @@ namespace Behaviac.Design
             this.Name = "ConnectDialog";
             this.ShowInTaskbar = false;
             this.ResumeLayout(false);
+
         }
 
         #endregion

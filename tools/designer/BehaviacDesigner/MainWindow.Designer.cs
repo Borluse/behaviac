@@ -96,6 +96,7 @@ namespace Behaviac.Design
             this.saveBehaviorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsBehaviorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportBehaviorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fastExportBehaviorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeBehaviorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAllMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportAllMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -148,7 +149,6 @@ namespace Behaviac.Design
             this.getLatestVersionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fastExportBehaviorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -372,6 +372,13 @@ namespace Behaviac.Design
             this.exportBehaviorMenuItem.Name = "exportBehaviorMenuItem";
             resources.ApplyResources(this.exportBehaviorMenuItem, "exportBehaviorMenuItem");
             this.exportBehaviorMenuItem.Click += new System.EventHandler(this.exportBehaviorMenuItem_Click);
+            // 
+            // fastExportBehaviorMenuItem
+            // 
+            this.fastExportBehaviorMenuItem.BackColor = System.Drawing.Color.DarkGray;
+            this.fastExportBehaviorMenuItem.Name = "fastExportBehaviorMenuItem";
+            resources.ApplyResources(this.fastExportBehaviorMenuItem, "fastExportBehaviorMenuItem");
+            this.fastExportBehaviorMenuItem.Click += new System.EventHandler(this.FastExportBehaviorMenuItem_Click);
             // 
             // closeBehaviorMenuItem
             // 
@@ -814,18 +821,11 @@ namespace Behaviac.Design
             this.aboutMenuItem.Name = "aboutMenuItem";
             this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
             // 
-            // fastExportBehaviorMenuItem
-            // 
-            this.fastExportBehaviorMenuItem.BackColor = System.Drawing.Color.DarkGray;
-            this.fastExportBehaviorMenuItem.Name = "fastExportBehaviorMenuItem";
-            resources.ApplyResources(this.fastExportBehaviorMenuItem, "fastExportBehaviorMenuItem");
-            this.fastExportBehaviorMenuItem.Click += new System.EventHandler(this.FastExportBehaviorMenuItem_Click);
-            // 
             // MainWindow
             // 
-            resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.dockPanel);
             this.IsMdiContainer = true;

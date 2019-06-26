@@ -253,7 +253,7 @@ namespace Behaviac.Design.Data
             }
         }
 
-        private static int _currentFrame = -1;
+        private static int _currentFrame = 0;
         public static int CurrentFrame
         {
             get
@@ -298,7 +298,7 @@ namespace Behaviac.Design.Data
         public static void Clear()
         {
             _totalFrames = -1;
-            _currentFrame = -1;
+            _currentFrame = 0; 
             _breakFrame = -1;
             _agentDatabase.Clear();
         }

@@ -45,18 +45,18 @@ namespace Behaviac.Design
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.parametersPanel = new Behaviac.Design.ParametersPanel();
             this.SuspendLayout();
-            //
+            // 
             // flowLayoutPanel
-            //
+            // 
             this.flowLayoutPanel.AutoSize = true;
             this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(526, 0);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(1004, 0);
             this.flowLayoutPanel.TabIndex = 0;
-            //
+            // 
             // parametersPanel
-            //
+            // 
             this.parametersPanel.AutoScroll = true;
             this.parametersPanel.AutoSize = true;
             this.parametersPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
@@ -65,14 +65,14 @@ namespace Behaviac.Design
             this.parametersPanel.Location = new System.Drawing.Point(0, 0);
             this.parametersPanel.Margin = new System.Windows.Forms.Padding(0);
             this.parametersPanel.Name = "parametersPanel";
-            this.parametersPanel.Size = new System.Drawing.Size(526, 50);
+            this.parametersPanel.Size = new System.Drawing.Size(1004, 64);
             this.parametersPanel.TabIndex = 5;
-            //
+            // 
             // ParametersDock
-            //
+            // 
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.ClientSize = new System.Drawing.Size(526, 262);
+            this.ClientSize = new System.Drawing.Size(1004, 262);
             this.Controls.Add(this.parametersPanel);
             this.Controls.Add(this.flowLayoutPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
